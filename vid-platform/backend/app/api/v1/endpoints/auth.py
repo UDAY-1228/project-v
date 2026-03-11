@@ -2,10 +2,10 @@ from fastapi import APIRouter
 
 router = APIRouter()
 
-@router.get("/login")
-async def login():
-    return {"message": "Login successful"}
+@router.get("/")
+def get_all():
+    return {"message": "GET all for auth"}
 
-@router.post("/refresh")
-async def refresh_token():
-    return {"message": "Token refreshed"}
+@router.get("/{id}")
+def get_by_id(id: str):
+    return {"message": f"GET auth with id {id}"}
