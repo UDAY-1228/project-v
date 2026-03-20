@@ -3,88 +3,16 @@ import SharedNoticeBoard from '../../../../core/frontend/pages/NoticeBoard';
 
 const NoticeBoard: React.FC = () => {
     const sidebarItems = [
-
-    {
-        "label": "Digital Notice Board",
-        "icon": "announcement",
-        "path": "/faculty/notice-board"
-    },
-
-    {
-        "label": "Notice Board",
-        "icon": "announcement",
-        "path": "/faculty/notice-board"
-    },
-    {
-        "label": "Activities",
-        "icon": "event",
-        "path": "/faculty/activities"
-    },
-    {
-        "label": "Discussion",
-        "icon": "forum",
-        "path": "/faculty/discussion"
-    },
-    {
-        "label": "Calendar",
-        "icon": "calendar_month",
-        "path": "/faculty/calendar"
-    },
-    {
-        "label": "My Courses",
-        "icon": "class",
-        "path": "/faculty/courses"
-    },
-    {
-        "label": "Timetable",
-        "icon": "schedule",
-        "path": "/faculty/timetable"
-    },
-    {
-        "label": "LMS Classroom",
-        "icon": "laptop",
-        "path": "/faculty/lms"
-    },
-    {
-        "label": "Assessments",
-        "icon": "quiz",
-        "path": "/faculty/assessments"
-    },
-    {
-        "label": "Assignments",
-        "icon": "assignment",
-        "path": "/faculty/assignments"
-    },
-    {
-        "label": "Attendance",
-        "icon": "task_alt",
-        "path": "/faculty/attendance"
-    },
-    {
-        "label": "Students",
-        "icon": "groups",
-        "path": "/faculty/students"
-    },
-    {
-        "label": "My Mentees",
-        "icon": "psychology",
-        "path": "/faculty/mentees"
-    },
-    {
-        "label": "Research",
-        "icon": "science",
-        "path": "/faculty/research"
-    },
-    {
-        "label": "Profile",
-        "icon": "person",
-        "path": "/faculty/profile"
-    },
-    {
-        "label": "Reports",
-        "icon": "analytics",
-        "path": "/faculty/reports"
-    }
+        { "label": "Digital Notice Board", "icon": "announcement", "path": "/faculty/notice-board" },
+        { "label": "Dashboard", "icon": "dashboard", "path": "/faculty/dashboard" },
+        { "label": "Activities", "icon": "event", "path": "/faculty/activities" },
+        { "label": "My Courses", "icon": "menu_book", "path": "/faculty/my-courses" },
+        { "label": "Class Timetable", "icon": "calendar_month", "path": "/faculty/class-timetable" },
+        { "label": "My Mentees", "icon": "groups", "path": "/faculty/my-mentees" },
+        { "label": "Question Banks", "icon": "quiz", "path": "/faculty/question-banks" },
+        { "label": "My Profile", "icon": "person", "path": "/faculty/my-profile" },
+        { "label": "Research Scholar", "icon": "science", "path": "/faculty/research-scholar" },
+        { "label": "Lms", "icon": "laptop_chromebook", "path": "/faculty/lms" }
     ];
 
     return <SharedNoticeBoard sidebarItems={sidebarItems} />;

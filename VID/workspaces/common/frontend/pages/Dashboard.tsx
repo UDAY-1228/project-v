@@ -3,88 +3,43 @@ import Layout from '../../../../core/frontend/components/Layout';
 import Card from '../../../../core/frontend/components/Card';
 
 const Dashboard: React.FC = () => {
-        const sidebarItems = [
-    {
-        "label": "Digital Notice Board",
-        "icon": "announcement",
-        "path": "/common/notice-board"
-    },
-
-    {
-        "label": "Home",
-        "icon": "home",
-        "path": "/common/home"
-    },
-    {
-        "label": "Student Central",
-        "icon": "school",
-        "path": "/common/student-central"
-    },
-    {
-        "label": "My Requests",
-        "icon": "rate_review",
-        "path": "/common/requests"
-    },
-    {
-        "label": "Payments",
-        "icon": "payments",
-        "path": "/common/payments"
-    },
-    {
-        "label": "Exams",
-        "icon": "assessment",
-        "path": "/common/exams"
-    },
-    {
-        "label": "HRMS",
-        "icon": "badge",
-        "path": "/common/hrms"
-    },
-    {
-        "label": "Configurations",
-        "icon": "settings",
-        "path": "/common/config"
-    }
-];
+    const sidebarItems = [
+        { "label": "Digital Notice Board", "icon": "announcement", "path": "/common/notice-board" },
+        { "label": "Dashboard", "icon": "dashboard", "path": "/common/dashboard" },
+        { "label": "Home", "icon": "home", "path": "/common/home" },
+        { "label": "Student Central", "icon": "hub", "path": "/common/student-central" },
+        { "label": "My Requests", "icon": "receipt_long", "path": "/common/my-requests" },
+        { "label": "Payments", "icon": "payments", "path": "/common/payments" },
+        { "label": "Examination", "icon": "grading", "path": "/common/examination" },
+        { "label": "Hrms", "icon": "badge", "path": "/common/hrms" },
+        { "label": "Configuration", "icon": "settings", "path": "/common/configuration" },
+        { "label": "User Management System", "icon": "manage_accounts", "path": "/common/user-management-system" }
+    ];
 
     return (
         <Layout sidebarItems={sidebarItems}>
             <div className="flex flex-col gap-10">
                 <div className="flex items-center justify-between">
                     <div>
-                        <h1 className="text-4xl font-black text-slate-800 tracking-tight capitalize">common Dashboard</h1>
-                        <p className="text-slate-500 font-medium tracking-tight">Welcome to the VID Portal</p>
+                        <h1 className="text-4xl font-black text-slate-800 tracking-tight capitalize">Common Dashboard</h1>
+                        <p className="text-slate-500 font-medium tracking-tight">Manage and oversee operational activities</p>
                     </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <Card title="Notifications" value="12" icon="announcement" color="blue" />
-                    <Card title="Completed Tasks" value="85%" icon="task_alt" color="green" />
-                    <Card title="Pending Review" value="5" icon="pending" color="yellow" />
-                    <Card title="System Health" value="Stable" icon="health_and_safety" color="red" />
+                    <Card title="Total Records" value="1,240" icon="groups" color="indigo" />
+                    <Card title="Active Status" value="94.2%" icon="check_circle" color="green" />
+                    <Card title="Pending Review" value="34" icon="pending" color="yellow" />
+                    <Card title="System Alerts" value="2" icon="error_outline" color="red" />
                 </div>
 
                 <div className="bg-white p-12 rounded-[3.5rem] shadow-2xl shadow-indigo-100/20 border border-slate-100">
                     <h3 className="text-sm font-black text-slate-400 uppercase tracking-widest mb-8 px-2 flex items-center gap-3">
                         <span className="w-8 h-[1px] bg-slate-200"></span>
-                        Overview & Features
+                        Common Dashboard Data Interface
                     </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {sidebarItems.map((item, idx) => (
-                            <a 
-                                key={idx} 
-                                href={item.path}
-                                className="group flex items-center gap-6 p-8 bg-slate-50/50 rounded-3xl border border-slate-100 hover:border-indigo-400 hover:bg-white hover:shadow-xl transition-all duration-300"
-                            >
-                                <div className="w-14 h-14 bg-white rounded-2xl shadow-md flex items-center justify-center text-indigo-500 group-hover:bg-indigo-500 group-hover:text-white transition-all">
-                                    <span className="material-icons text-2xl group-hover:scale-110 transition-transform">{item.icon}</span>
-                                </div>
-                                <div>
-                                    <p className="font-extrabold text-slate-800 tracking-tight group-hover:text-indigo-600 transition-colors">{item.label}</p>
-                                    <p className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mt-1">Access Module</p>
-                                </div>
-                            </a>
-                        ))}
+                    <div className="flex items-center justify-center p-20 bg-slate-50 border-2 border-dashed border-slate-200 rounded-[2.5rem]">
+                        <p className="text-slate-400 font-bold uppercase tracking-widest text-xs">Module Implementation Area</p>
                     </div>
                 </div>
             </div>

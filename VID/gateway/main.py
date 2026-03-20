@@ -33,7 +33,8 @@ app.include_router(admin_router, prefix="/api/admin", tags=["Admin"])
 workspaces = [
     "principal", "academic_coordinator", "admission_officer", "admissions_counselor",
     "common", "team_owner", "transport_coordinator", "employee", "hostel_admin",
-    "payment_administrator", "examination", "faculty", "student"
+    "payment_administrator", "examination", "faculty", "student", "course_coordinator",
+    "sports_officer", "sports_and_co_curricular"
 ]
 
 for ws in workspaces:

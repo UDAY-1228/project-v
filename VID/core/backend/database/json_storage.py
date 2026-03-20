@@ -2,35 +2,46 @@ import json
 import os
 from typing import Dict, List, Any
 
-STORAGE_PATH = "/Users/nivas/Documents/React apps/VID/core/backend/database/storage.json"
+import json
+import os
+from typing import Dict, List, Any
 
-def ensure_storage():
-    if not os.path.exists(STORAGE_PATH):
-        os.makedirs(os.path.dirname(STORAGE_PATH), exist_ok=True)
-        with open(STORAGE_PATH, 'w') as f:
-            json.dump({"institutions": [], "users": []}, f)
+BASE_DIR = "/Users/nivas/Documents/React apps/v/project-v/VID/core/backend/database"
+USERS_PATH = os.path.join(BASE_DIR, "users.json")
+INSTS_PATH = os.path.join(BASE_DIR, "institutions.json")
+WS_PATH = os.path.join(BASE_DIR, "workspaces.json")
 
-def read_storage() -> Dict[str, Any]:
-    ensure_storage()
-    with open(STORAGE_PATH, 'r') as f:
+def ensure_file(path: str, default_data: Any = []):
+    if not os.path.exists(path):
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, 'w') as f:
+            json.dump(default_data, f)
+
+def read_json(path: str) -> Any:
+    ensure_file(path)
+    with open(path, 'r') as f:
         return json.load(f)
 
-def write_storage(data: Dict[str, Any]):
-    with open(STORAGE_PATH, 'w') as f:
+def write_json(path: str, data: Any):
+    with open(path, 'w') as f:
         json.dump(data, f, indent=4)
 
 def add_institution(inst: Dict[str, Any]):
-    data = read_storage()
-    data["institutions"].append(inst)
-    write_storage(data)
+    data = read_json(INSTS_PATH)
+    data.append(inst)
+    write_json(INSTS_PATH, data)
 
 def add_user(user: Dict[str, Any]):
-    data = read_storage()
-    data["users"].append(user)
-    write_storage(data)
+    data = read_json(USERS_PATH)
+    data.append(user)
+    write_json(USERS_PATH, data)
 
 def get_institutions() -> List[Dict[str, Any]]:
-    return read_storage().get("institutions", [])
+    return read_json(INSTS_PATH)
 
 def get_users() -> List[Dict[str, Any]]:
-    return read_storage().get("users", [])
+    return read_json(USERS_PATH)
+
+def get_workspaces() -> List[Dict[str, Any]]:
+    return read_json(WS_PATH)
+

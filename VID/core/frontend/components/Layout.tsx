@@ -85,31 +85,43 @@ const Layout: React.FC<LayoutProps> = ({ children, sidebarItems = [] }) => {
                 </div>
             </div>
 
-            {/* Main Content Area */}
-            <div className="flex-1 flex flex-col overflow-hidden w-full">
-                {/* Header */}
-                <header className="h-20 bg-white/80 backdrop-blur-md border-b border-slate-200 flex items-center justify-between px-6 lg:px-10 shrink-0">
-                    <div className="flex items-center gap-4">
-                        <button onClick={() => setIsSidebarOpen(true)} className="lg:hidden p-2 text-slate-500">
-                            <span className="material-icons">menu</span>
-                        </button>
-                        <div className="hidden sm:flex items-center bg-slate-100 px-5 py-2.5 rounded-2xl border border-slate-200 lg:min-w-[350px]">
-                            <span className="material-icons text-slate-400 text-lg">search</span>
-                            <input type="text" placeholder="Search system modules..." className="bg-transparent border-none outline-none px-3 text-sm text-slate-600 w-full font-medium" />
-                        </div>
+        {/* Main Content Area */}
+        <div className="flex-1 flex flex-col overflow-hidden w-full">
+            {/* Header */}
+            <header className="h-20 bg-white/80 backdrop-blur-md border-b border-slate-200 flex items-center justify-between px-6 lg:px-10 shrink-0">
+                <div className="flex items-center gap-4">
+                    <button onClick={() => setIsSidebarOpen(true)} className="lg:hidden p-2 text-slate-500">
+                        <span className="material-icons">menu</span>
+                    </button>
+                    <div className="hidden sm:flex items-center bg-slate-100 px-5 py-2.5 rounded-2xl border border-slate-200 lg:min-w-[350px]">
+                        <span className="material-icons text-slate-400 text-lg">search</span>
+                        <input type="text" placeholder="Search system modules..." className="bg-transparent border-none outline-none px-3 text-sm text-slate-600 w-full font-medium" />
                     </div>
-                    
-                    <div className="flex items-center gap-4">
-                        <div className="hidden xs:flex w-10 h-10 bg-slate-100 rounded-full items-center justify-center text-slate-400">
-                            <span className="material-icons text-xl">notifications_none</span>
-                        </div>
-                        <div className="w-10 h-10 bg-indigo-500 rounded-full border-4 border-indigo-50 flex items-center justify-center text-white font-black text-xs uppercase shadow-lg shadow-indigo-100">
-                            {JSON.parse(localStorage.getItem('user_data') || '{}').username?.substring(0,2) || 'AD'}
-                        </div>
+                </div>
+                
+                <div className="flex items-center gap-6">
+                    {JSON.parse(localStorage.getItem('user_data') || '{}').assignedWorkspaces?.length > 1 && (
+                        <select 
+                            className="hidden md:block bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-bold uppercase tracking-widest rounded-xl px-4 py-2 outline-none cursor-pointer hover:bg-indigo-100 transition-colors"
+                            onChange={(e) => window.location.href = `/${e.target.value.replace('_', '-')}/dashboard`}
+                            defaultValue={window.location.pathname.split('/')[1].replace('-', '_')}
+                        >
+                            <option value="" disabled>Switch Workspace</option>
+                            {JSON.parse(localStorage.getItem('user_data') || '{}').assignedWorkspaces.map((ws: string) => (
+                                <option key={ws} value={ws}>{ws.replace('_', ' ')}</option>
+                            ))}
+                        </select>
+                    )}
+                    <div className="hidden xs:flex w-10 h-10 bg-slate-100 rounded-full items-center justify-center text-slate-400">
+                        <span className="material-icons text-xl">notifications_none</span>
                     </div>
-                </header>
+                    <div className="w-10 h-10 bg-indigo-500 rounded-full border-4 border-indigo-50 flex items-center justify-center text-white font-black text-xs uppercase shadow-lg shadow-indigo-100">
+                        {JSON.parse(localStorage.getItem('user_data') || '{}').username?.substring(0,2) || 'AD'}
+                    </div>
+                </div>
+            </header>
 
-                {/* Main Content */}
+            {/* Main Content */}
                 <main className="flex-1 overflow-y-auto">
                     <div className="p-6 lg:p-10 max-w-[1600px] mx-auto animate-fadeIn">
                         {children}

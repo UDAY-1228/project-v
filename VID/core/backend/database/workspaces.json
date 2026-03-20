@@ -1,0 +1,148 @@
+[
+    {
+        "name": "principal",
+        "features": [
+            "Digital Notice Board",
+            "Activities",
+            "Academics",
+            "Data Management",
+            "Configurations"
+        ]
+    },
+    {
+        "name": "academic-coordinator",
+        "features": [
+            "Digital Notice Board",
+            "Activities",
+            "Principal Dashboard",
+            "Academics",
+            "Academic Setup",
+            "Courses",
+            "Master Courses",
+            "Assessment",
+            "Data Management",
+            "Configurations"
+        ]
+    },
+    {
+        "name": "admission-officer",
+        "features": [
+            "Digital Notice Board",
+            "Prospects",
+            "Applications",
+            "Admissions"
+        ]
+    },
+    {
+        "name": "admissions-counselor",
+        "features": [
+            "Digital Notice Board",
+            "Prospects",
+            "Applications",
+            "Admissions",
+            "Configurations"
+        ]
+    },
+    {
+        "name": "common",
+        "features": [
+            "Digital Notice Board",
+            "Student Central",
+            "My Requests",
+            "Payments",
+            "Exams",
+            "HRMS",
+            "Configurations"
+        ]
+    },
+    {
+        "name": "team-owner",
+        "features": [
+            "Digital Notice Board",
+            "Institutions",
+            "Organization Settings",
+            "User Management",
+            "Apps Data Management",
+            "All Courses"
+        ]
+    },
+    {
+        "name": "transport-coordinator",
+        "features": [
+            "Digital Notice Board",
+            "Transport Analytics",
+            "Transport Registrations",
+            "Buses",
+            "Boarding Points",
+            "Routes",
+            "Route Bus Assignment",
+            "Configuration",
+            "Transport Route"
+        ]
+    },
+    {
+        "name": "employee",
+        "features": [
+            "Digital Notice Board",
+            "Leaves",
+            "Attendance",
+            "Salary",
+            "Expenses",
+            "Shift Requests",
+            "Compensatory Leave"
+        ]
+    },
+    {
+        "name": "hostel-admin",
+        "features": [
+            "Digital Notice Board",
+            "Hostelers",
+            "Attendance",
+            "Gate Pass Requests",
+            "Reports",
+            "Configuration"
+        ]
+    },
+    {
+        "name": "payment-administrator",
+        "features": [
+            "Digital Notice Board",
+            "Student Permissions",
+            "Academic Fees",
+            "Exam Fees",
+            "Concessions",
+            "Online Transactions",
+            "Challans",
+            "Statements",
+            "Scholarships"
+        ]
+    },
+    {
+        "name": "faculty",
+        "features": [
+            "Digital Notice Board",
+            "Discussion Forum",
+            "My Courses",
+            "Timetable",
+            "LMS Classrooms",
+            "Assessments",
+            "Attendance Tracking",
+            "My Mentees",
+            "Research Scholars"
+        ]
+    },
+    {
+        "name": "student",
+        "features": [
+            "Digital Notice Board",
+            "Attendance",
+            "Events",
+            "LMS",
+            "Exams",
+            "Assessments",
+            "Fee Payments",
+            "My Profile",
+            "Calendar"
+        ]
+    }
+]
