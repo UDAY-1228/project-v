@@ -15,49 +15,44 @@ const Dashboard: React.FC = () => {
         "path": "/academic-coordinator/activities"
     },
     {
-        "label": "Course Registrations",
-        "icon": "how_to_reg",
-        "path": "/academic-coordinator/registrations"
+        "label": "Principal Dashboard",
+        "icon": "dashboard_customize",
+        "path": "/academic-coordinator/principal-dashboard"
     },
     {
-        "label": "Student Promotions",
-        "icon": "trending_up",
-        "path": "/academic-coordinator/promotions"
+        "label": "Academics",
+        "icon": "school",
+        "path": "/academic-coordinator/academics"
     },
     {
-        "label": "All Students",
-        "icon": "groups",
-        "path": "/academic-coordinator/students"
-    },
-    {
-        "label": "Question Banks",
-        "icon": "quiz",
-        "path": "/academic-coordinator/questions"
+        "label": "Academic Setup",
+        "icon": "settings_suggest",
+        "path": "/academic-coordinator/setup"
     },
     {
         "label": "Courses",
         "icon": "menu_book",
-        "path": "/academic_coordinator/courses"
+        "path": "/academic-coordinator/courses"
     },
     {
-        "label": "Attendance",
-        "icon": "check_circle",
-        "path": "/academic_coordinator/attendance"
+        "label": "Master Courses",
+        "icon": "library_books",
+        "path": "/academic-coordinator/master-courses"
     },
     {
-        "label": "Classrooms",
-        "icon": "meeting_room",
-        "path": "/academic_coordinator/classrooms"
+        "label": "Assessment",
+        "icon": "assignment_turned_in",
+        "path": "/academic-coordinator/assessment"
     },
     {
-        "label": "Reports",
-        "icon": "analytics",
-        "path": "/academic_coordinator/reports"
+        "label": "Data Management",
+        "icon": "storage",
+        "path": "/academic-coordinator/data-management"
     },
     {
-        "label": "Faculty Timetable",
-        "icon": "event_note",
-        "path": "/academic_coordinator/timetable"
+        "label": "Configurations",
+        "icon": "settings",
+        "path": "/academic-coordinator/config"
     }
 ];
 

@@ -23,11 +23,35 @@ import TransportRoutes from '../workspaces/transport_coordinator/frontend/pages/
 import RouteBusAssignment from '../workspaces/transport_coordinator/frontend/pages/RouteBusAssignment';
 import Configuration from '../workspaces/transport_coordinator/frontend/pages/Configuration';
 import TransportRoute from '../workspaces/transport_coordinator/frontend/pages/TransportRoute';
+
+// Academic Coordinator Pages
+import AcademicNoticeBoard from '../workspaces/academic_coordinator/frontend/pages/NoticeBoard';
+import AcademicActivities from '../workspaces/academic_coordinator/frontend/pages/Activities';
+import AcademicPrincipalDashboard from '../workspaces/academic_coordinator/frontend/pages/PrincipalDashboard';
+import Academics from '../workspaces/academic_coordinator/frontend/pages/Academics';
+import AcademicSetup from '../workspaces/academic_coordinator/frontend/pages/AcademicSetup';
+import AcademicCourses from '../workspaces/academic_coordinator/frontend/pages/Courses';
+import MasterCourses from '../workspaces/academic_coordinator/frontend/pages/MasterCourses';
+import AcademicAssessment from '../workspaces/academic_coordinator/frontend/pages/Assessment';
+import DataManagement from '../workspaces/academic_coordinator/frontend/pages/DataManagement';
+import AcademicConfigurations from '../workspaces/academic_coordinator/frontend/pages/Configurations';
+
 import EmployeeDashboard from '../workspaces/employee/frontend/pages/Dashboard';
 import HostelAdminDashboard from '../workspaces/hostel_admin/frontend/pages/Dashboard';
 import PaymentAdministratorDashboard from '../workspaces/payment_administrator/frontend/pages/Dashboard';
 import FacultyDashboard from '../workspaces/faculty/frontend/pages/Dashboard';
 import StudentDashboard from '../workspaces/student/frontend/pages/Dashboard';
+
+import PrincipalNoticeBoard from '../workspaces/principal/frontend/pages/NoticeBoard';
+import AdmissionOfficerNoticeBoard from '../workspaces/admission_officer/frontend/pages/NoticeBoard';
+import AdmissionsCounselorNoticeBoard from '../workspaces/admissions_counselor/frontend/pages/NoticeBoard';
+import CommonNoticeBoard from '../workspaces/common/frontend/pages/NoticeBoard';
+import TeamOwnerNoticeBoard from '../workspaces/team_owner/frontend/pages/NoticeBoard';
+import EmployeeNoticeBoard from '../workspaces/employee/frontend/pages/NoticeBoard';
+import HostelAdminNoticeBoard from '../workspaces/hostel_admin/frontend/pages/NoticeBoard';
+import PaymentAdministratorNoticeBoard from '../workspaces/payment_administrator/frontend/pages/NoticeBoard';
+import FacultyNoticeBoard from '../workspaces/faculty/frontend/pages/NoticeBoard';
+import StudentNoticeBoard from '../workspaces/student/frontend/pages/NoticeBoard';
 
 const App: React.FC = () => {
   return (
@@ -46,11 +70,29 @@ const App: React.FC = () => {
         
         {/* Workspace Routes */}
         <Route path="/principal/dashboard" element={<PrincipalDashboard />} />
+        <Route path="/principal/notice-board" element={<PrincipalNoticeBoard />} />
+        
+        {/* Academic Coordinator Routes */}
         <Route path="/academic-coordinator/dashboard" element={<AcademicDashboard />} />
+        <Route path="/academic-coordinator/notice-board" element={<AcademicNoticeBoard />} />
+        <Route path="/academic-coordinator/activities" element={<AcademicActivities />} />
+        <Route path="/academic-coordinator/principal-dashboard" element={<AcademicPrincipalDashboard />} />
+        <Route path="/academic-coordinator/academics" element={<Academics />} />
+        <Route path="/academic-coordinator/setup" element={<AcademicSetup />} />
+        <Route path="/academic-coordinator/courses" element={<AcademicCourses />} />
+        <Route path="/academic-coordinator/master-courses" element={<MasterCourses />} />
+        <Route path="/academic-coordinator/assessment" element={<AcademicAssessment />} />
+        <Route path="/academic-coordinator/data-management" element={<DataManagement />} />
+        <Route path="/academic-coordinator/config" element={<AcademicConfigurations />} />
+
         <Route path="/admission-officer/dashboard" element={<AdmissionOfficerDashboard />} />
+        <Route path="/admission-officer/notice-board" element={<AdmissionOfficerNoticeBoard />} />
         <Route path="/admissions-counselor/dashboard" element={<AdmissionsCounselorDashboard />} />
+        <Route path="/admissions-counselor/notice-board" element={<AdmissionsCounselorNoticeBoard />} />
         <Route path="/common/dashboard" element={<CommonDashboard />} />
+        <Route path="/common/notice-board" element={<CommonNoticeBoard />} />
         <Route path="/team-owner/dashboard" element={<TeamOwnerDashboard />} />
+        <Route path="/team-owner/notice-board" element={<TeamOwnerNoticeBoard />} />
         <Route path="/transport-coordinator/dashboard" element={<TransportCoordinatorDashboard />} />
         <Route path="/transport-coordinator/notice-board" element={<NoticeBoard />} />
         <Route path="/transport-coordinator/analytics" element={<Analytics />} />
@@ -62,10 +104,15 @@ const App: React.FC = () => {
         <Route path="/transport-coordinator/config" element={<Configuration />} />
         <Route path="/transport-coordinator/transport-route" element={<TransportRoute />} />
         <Route path="/employee/dashboard" element={<EmployeeDashboard />} />
+        <Route path="/employee/notice-board" element={<EmployeeNoticeBoard />} />
         <Route path="/hostel-admin/dashboard" element={<HostelAdminDashboard />} />
+        <Route path="/hostel-admin/notice-board" element={<HostelAdminNoticeBoard />} />
         <Route path="/payment-administrator/dashboard" element={<PaymentAdministratorDashboard />} />
+        <Route path="/payment-administrator/notice-board" element={<PaymentAdministratorNoticeBoard />} />
         <Route path="/faculty/dashboard" element={<FacultyDashboard />} />
+        <Route path="/faculty/notice-board" element={<FacultyNoticeBoard />} />
         <Route path="/student/dashboard" element={<StudentDashboard />} />
+        <Route path="/student/notice-board" element={<StudentNoticeBoard />} />
         
         {/* Fallback */}
         <Route path="*" element={<Navigate to="/" replace />} />

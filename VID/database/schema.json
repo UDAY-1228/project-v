@@ -47,23 +47,23 @@
     },
     {
       "name": "academic-coordinator",
-      "features": ["Course Registrations", "Student Promotions", "Question Banks", "Courses", "Attendance", "Classrooms", "Reports"]
+      "features": ["Digital Notice Board", "Activities", "Principal Dashboard", "Academics", "Academic Setup", "Courses", "Master Courses", "Assessment", "Data Management", "Configurations"]
     },
     {
       "name": "admission-officer",
-      "features": ["Prospects", "Applications", "Admissions"]
+      "features": ["Digital Notice Board", "Prospects", "Applications", "Admissions"]
     },
     {
       "name": "admissions-counselor",
-      "features": ["Prospects", "Applications", "Admissions", "Configurations"]
+      "features": ["Digital Notice Board", "Prospects", "Applications", "Admissions", "Configurations"]
     },
     {
       "name": "common",
-      "features": ["Student Central", "My Requests", "Payments", "Exams", "HRMS", "Configurations"]
+      "features": ["Digital Notice Board", "Student Central", "My Requests", "Payments", "Exams", "HRMS", "Configurations"]
     },
     {
       "name": "team-owner",
-      "features": ["Institutions", "Organization Settings", "User Management", "Apps Data Management", "All Courses"]
+      "features": ["Digital Notice Board", "Institutions", "Organization Settings", "User Management", "Apps Data Management", "All Courses"]
     },
     {
       "name": "transport-coordinator",
@@ -71,23 +71,23 @@
     },
     {
       "name": "employee",
-      "features": ["Leaves", "Attendance", "Salary", "Expenses", "Shift Requests", "Compensatory Leave"]
+      "features": ["Digital Notice Board", "Leaves", "Attendance", "Salary", "Expenses", "Shift Requests", "Compensatory Leave"]
     },
     {
       "name": "hostel-admin",
-      "features": ["Hostelers", "Attendance", "Gate Pass Requests", "Reports", "Configuration"]
+      "features": ["Digital Notice Board", "Hostelers", "Attendance", "Gate Pass Requests", "Reports", "Configuration"]
     },
     {
       "name": "payment-administrator",
-      "features": ["Student Permissions", "Academic Fees", "Exam Fees", "Concessions", "Online Transactions", "Challans", "Statements", "Scholarships"]
+      "features": ["Digital Notice Board", "Student Permissions", "Academic Fees", "Exam Fees", "Concessions", "Online Transactions", "Challans", "Statements", "Scholarships"]
     },
     {
       "name": "faculty",
-      "features": ["Discussion Forum", "My Courses", "Timetable", "LMS Classrooms", "Assessments", "Attendance Tracking", "My Mentees", "Research Scholars"]
+      "features": ["Digital Notice Board", "Discussion Forum", "My Courses", "Timetable", "LMS Classrooms", "Assessments", "Attendance Tracking", "My Mentees", "Research Scholars"]
     },
     {
       "name": "student",
-      "features": ["Notice Board", "Attendance", "Events", "LMS", "Exams", "Assessments", "Fee Payments", "My Profile", "Calendar"]
+      "features": ["Digital Notice Board", "Attendance", "Events", "LMS", "Exams", "Assessments", "Fee Payments", "My Profile", "Calendar"]
     }
   ]
 }

@@ -3,7 +3,13 @@ import Layout from '../../../../core/frontend/components/Layout';
 import Card from '../../../../core/frontend/components/Card';
 
 const Dashboard: React.FC = () => {
-    const sidebarItems = [
+        const sidebarItems = [
+    {
+        "label": "Digital Notice Board",
+        "icon": "announcement",
+        "path": "/admission-officer/notice-board"
+    },
+
     {
         "label": "Prospects",
         "icon": "person_search",
