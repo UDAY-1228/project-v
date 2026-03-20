@@ -67,7 +67,7 @@
     },
     {
       "name": "transport-coordinator",
-      "features": ["Analytics", "Buses", "Boarding Points", "Routes", "Route Bus Assignment", "Configuration"]
+      "features": ["Digital Notice Board", "Transport Analytics", "Transport Registrations", "Buses", "Boarding Points", "Routes", "Route Bus Assignment", "Configuration", "Transport Route"]
     },
     {
       "name": "employee",

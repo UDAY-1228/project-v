@@ -43,6 +43,11 @@ const Dashboard: React.FC = () => {
         "label": "Configuration",
         "icon": "settings",
         "path": "/transport-coordinator/config"
+    },
+    {
+        "label": "Transport Route",
+        "icon": "alt_route",
+        "path": "/transport-coordinator/transport-route"
     }
 ];
 

@@ -1,0 +1,37 @@
+{
+  "buses": [
+    { "id": "B001", "number": "KA-01-F-1234", "capacity": 50, "driver": "John Doe", "status": "Active" },
+    { "id": "B002", "number": "KA-01-F-5678", "capacity": 40, "driver": "Jane Smith", "status": "In Maintenance" }
+  ],
+  "routes": [
+    { "id": "R001", "name": "East Route", "distance": "15km", "stops": ["Point A", "Point B", "Point C"] },
+    { "id": "R002", "name": "West Route", "distance": "12km", "stops": ["Point X", "Point Y", "Point Z"] }
+  ],
+  "boarding_points": [
+    { "id": "BP001", "name": "Main Gate", "coordinates": "12.9716, 77.5946" },
+    { "id": "BP002", "name": "Library Square", "coordinates": "12.9720, 77.5950" }
+  ],
+  "registrations": [
+    { "student_id": "S101", "student_name": "Alice Johnson", "route": "East Route", "bus": "B001", "status": "Pending" },
+    { "student_id": "S102", "student_name": "Bob Williams", "route": "West Route", "bus": "B002", "status": "Approved" }
+  ],
+  "assignments": [
+    { "route_id": "R001", "bus_id": "B001", "driver": "John Doe" },
+    { "route_id": "R002", "bus_id": "B002", "driver": "Jane Smith" }
+  ],
+  "notice_board": [
+    { "id": "N001", "title": "Route Change", "content": "The West Route will have a 10 min delay today.", "date": "2026-03-20" },
+    { "id": "N002", "title": "Maintenance Notice", "content": "Bus B002 is under maintenance.", "date": "2026-03-19" }
+  ],
+  "analytics": {
+    "total_buses": 10,
+    "active_routes": 5,
+    "total_students": 450,
+    "occupancy_rate": "85%"
+  },
+  "configurations": {
+    "fee_per_km": 100,
+    "late_fee_threshold": 5,
+    "emergency_contact": "9876543210"
+  }
+}

@@ -14,6 +14,15 @@ import AdmissionsCounselorDashboard from '../workspaces/admissions_counselor/fro
 import CommonDashboard from '../workspaces/common/frontend/pages/Dashboard';
 import TeamOwnerDashboard from '../workspaces/team_owner/frontend/pages/Dashboard';
 import TransportCoordinatorDashboard from '../workspaces/transport_coordinator/frontend/pages/Dashboard';
+import NoticeBoard from '../workspaces/transport_coordinator/frontend/pages/NoticeBoard';
+import Analytics from '../workspaces/transport_coordinator/frontend/pages/Analytics';
+import Registrations from '../workspaces/transport_coordinator/frontend/pages/Registrations';
+import Buses from '../workspaces/transport_coordinator/frontend/pages/Buses';
+import BoardingPoints from '../workspaces/transport_coordinator/frontend/pages/BoardingPoints';
+import TransportRoutes from '../workspaces/transport_coordinator/frontend/pages/Routes';
+import RouteBusAssignment from '../workspaces/transport_coordinator/frontend/pages/RouteBusAssignment';
+import Configuration from '../workspaces/transport_coordinator/frontend/pages/Configuration';
+import TransportRoute from '../workspaces/transport_coordinator/frontend/pages/TransportRoute';
 import EmployeeDashboard from '../workspaces/employee/frontend/pages/Dashboard';
 import HostelAdminDashboard from '../workspaces/hostel_admin/frontend/pages/Dashboard';
 import PaymentAdministratorDashboard from '../workspaces/payment_administrator/frontend/pages/Dashboard';
@@ -43,6 +52,15 @@ const App: React.FC = () => {
         <Route path="/common/dashboard" element={<CommonDashboard />} />
         <Route path="/team-owner/dashboard" element={<TeamOwnerDashboard />} />
         <Route path="/transport-coordinator/dashboard" element={<TransportCoordinatorDashboard />} />
+        <Route path="/transport-coordinator/notice-board" element={<NoticeBoard />} />
+        <Route path="/transport-coordinator/analytics" element={<Analytics />} />
+        <Route path="/transport-coordinator/registrations" element={<Registrations />} />
+        <Route path="/transport-coordinator/buses" element={<Buses />} />
+        <Route path="/transport-coordinator/boarding" element={<BoardingPoints />} />
+        <Route path="/transport-coordinator/routes" element={<TransportRoutes />} />
+        <Route path="/transport-coordinator/assignment" element={<RouteBusAssignment />} />
+        <Route path="/transport-coordinator/config" element={<Configuration />} />
+        <Route path="/transport-coordinator/transport-route" element={<TransportRoute />} />
         <Route path="/employee/dashboard" element={<EmployeeDashboard />} />
         <Route path="/hostel-admin/dashboard" element={<HostelAdminDashboard />} />
         <Route path="/payment-administrator/dashboard" element={<PaymentAdministratorDashboard />} />

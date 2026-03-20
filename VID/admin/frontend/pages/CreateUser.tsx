@@ -168,7 +168,7 @@ const CreateUser: React.FC = () => {
                             </h3>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {workspacesList.map(ws => (
-                                    <label 
+                                    <div 
                                         key={ws.id} 
                                         className={`group flex items-center justify-between p-6 rounded-3xl border-2 transition-all cursor-pointer ${formData.assignedWorkspaces.includes(ws.id) ? 'border-indigo-500 bg-indigo-50/50' : 'border-slate-50 bg-slate-50 hover:border-slate-200'}`}
                                         onClick={() => handleCheckboxChange(ws.id)}
@@ -183,9 +183,9 @@ const CreateUser: React.FC = () => {
                                             type="checkbox"
                                             className="hidden"
                                             checked={formData.assignedWorkspaces.includes(ws.id)}
-                                            readOnly
+                                            onChange={() => {}} // Controlled component
                                         />
-                                    </label>
+                                    </div>
                                 ))}
                             </div>
                         </div>
