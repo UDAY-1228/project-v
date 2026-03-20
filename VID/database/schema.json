@@ -1,0 +1,93 @@
+{
+  "project": "CAMPUX - Master Campus Management System",
+  "version": "1.1.0",
+  "database": "MongoDB",
+  "collections": [
+    {
+      "name": "users",
+      "description": "Central user repository with RBAC",
+      "index": ["username", "email", "institution_id"],
+      "schema": {
+        "username": "string",
+        "email": "string",
+        "full_name": "string",
+        "hashed_password": "string",
+        "role": "enum[super-admin, admin, teacher, student, ...]",
+        "institution_id": "string (nullable)",
+        "is_active": "boolean",
+        "created_at": "datetime",
+        "updated_at": "datetime"
+      }
+    },
+    {
+      "name": "institutions",
+      "description": "Multi-tenant Institution profiles",
+      "index": ["name", "email"],
+      "schema": {
+        "name": "string",
+        "address": "string",
+        "phone": "string",
+        "email": "string",
+        "admin_user_id": "string",
+        "is_active": "boolean",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "analytics": {
+          "students_count": "integer",
+          "faculty_count": "integer",
+          "revenue": "float"
+        }
+      }
+    }
+  ],
+  "workspaces": [
+    {
+      "name": "principal",
+      "features": ["Digital Notice Board", "Activities", "Academics", "Data Management", "Configurations"]
+    },
+    {
+      "name": "academic-coordinator",
+      "features": ["Course Registrations", "Student Promotions", "Question Banks", "Courses", "Attendance", "Classrooms", "Reports"]
+    },
+    {
+      "name": "admission-officer",
+      "features": ["Prospects", "Applications", "Admissions"]
+    },
+    {
+      "name": "admissions-counselor",
+      "features": ["Prospects", "Applications", "Admissions", "Configurations"]
+    },
+    {
+      "name": "common",
+      "features": ["Student Central", "My Requests", "Payments", "Exams", "HRMS", "Configurations"]
+    },
+    {
+      "name": "team-owner",
+      "features": ["Institutions", "Organization Settings", "User Management", "Apps Data Management", "All Courses"]
+    },
+    {
+      "name": "transport-coordinator",
+      "features": ["Analytics", "Buses", "Boarding Points", "Routes", "Route Bus Assignment", "Configuration"]
+    },
+    {
+      "name": "employee",
+      "features": ["Leaves", "Attendance", "Salary", "Expenses", "Shift Requests", "Compensatory Leave"]
+    },
+    {
+      "name": "hostel-admin",
+      "features": ["Hostelers", "Attendance", "Gate Pass Requests", "Reports", "Configuration"]
+    },
+    {
+      "name": "payment-administrator",
+      "features": ["Student Permissions", "Academic Fees", "Exam Fees", "Concessions", "Online Transactions", "Challans", "Statements", "Scholarships"]
+    },
+    {
+      "name": "faculty",
+      "features": ["Discussion Forum", "My Courses", "Timetable", "LMS Classrooms", "Assessments", "Attendance Tracking", "My Mentees", "Research Scholars"]
+    },
+    {
+      "name": "student",
+      "features": ["Notice Board", "Attendance", "Events", "LMS", "Exams", "Assessments", "Fee Payments", "My Profile", "Calendar"]
+    }
+  ]
+}
