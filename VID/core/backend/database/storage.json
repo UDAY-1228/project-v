@@ -1,0 +1,29 @@
+{
+    "institutions": [
+        {
+            "institutionId": "efc878de-d9f4-4eb0-9b9b-929703c6991f",
+            "name": "Sphoorthy ",
+            "code": "SPHN-01",
+            "adminCredentials": {
+                "email": "morishettylaxminivas@gmail.com",
+                "username": "morishettylaxminivas@gmail.com",
+                "password": "Laxmi@2006"
+            }
+        }
+    ],
+    "users": [
+        {
+            "userId": "a5b93463-5eb0-4da1-a6e9-700a9a97d987",
+            "username": "morishettylaxminivas@gmail.com",
+            "password": "Laxmi@2006",
+            "role": "admin",
+            "institutionId": "efc878de-d9f4-4eb0-9b9b-929703c6991f",
+            "assignedWorkspaces": [
+                "dashboard",
+                "academics",
+                "attendance",
+                "users"
+            ]
+        }
+    ]
+}

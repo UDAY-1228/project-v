@@ -6,7 +6,8 @@ const Button: React.FC<{
     type?: 'button' | 'submit' | 'reset';
     className?: string;
     variant?: 'primary' | 'secondary' | 'danger';
-}> = ({ children, onClick, type = 'button', className, variant = 'primary' }) => {
+    disabled?: boolean;
+}> = ({ children, onClick, type = 'button', className, variant = 'primary', disabled = false }) => {
     const baseClasses = "px-6 py-2.5 rounded-lg font-semibold transition-all duration-200 active:scale-95 shadow-sm";
     const variantClasses = {
         primary: "bg-indigo-600 hover:bg-indigo-700 text-white shadow-indigo-100",
@@ -18,7 +19,8 @@ const Button: React.FC<{
         <button
             type={type}
             onClick={onClick}
-            className={`${baseClasses} ${variantClasses[variant]} ${className}`}
+            disabled={disabled}
+            className={`${baseClasses} ${variantClasses[variant]} ${className} ${disabled ? 'opacity-50 cursor-not-allowed grayscale' : ''}`}
         >
             {children}
         </button>

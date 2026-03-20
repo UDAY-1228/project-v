@@ -1,17 +1,93 @@
 import React from 'react';
-import Layout from '../../../core/frontend/components/Layout';
-import Card from '../components/Card';
+import Layout from '../../../../core/frontend/components/Layout';
+import Card from '../../../../core/frontend/components/Card';
 
-const Dashboard: React.FC = () => {{
-    const sidebarItems = [{"label": "Notice Board", "icon": "announcement", "path": "/faculty/notice-board"}, {"label": "Activities", "icon": "event", "path": "/faculty/activities"}, {"label": "Discussion", "icon": "forum", "path": "/faculty/discussion"}, {"label": "Calendar", "icon": "calendar_month", "path": "/faculty/calendar"}, {"label": "My Courses", "icon": "class", "path": "/faculty/courses"}, {"label": "Timetable", "icon": "schedule", "path": "/faculty/timetable"}, {"label": "LMS Classroom", "icon": "laptop", "path": "/faculty/lms"}, {"label": "Assessments", "icon": "quiz", "path": "/faculty/assessments"}, {"label": "Assignments", "icon": "assignment", "path": "/faculty/assignments"}, {"label": "Attendance", "icon": "task_alt", "path": "/faculty/attendance"}, {"label": "Students", "icon": "groups", "path": "/faculty/students"}, {"label": "My Mentees", "icon": "psychology", "path": "/faculty/mentees"}, {"label": "Research", "icon": "science", "path": "/faculty/research"}, {"label": "Profile", "icon": "person", "path": "/faculty/profile"}, {"label": "Reports", "icon": "analytics", "path": "/faculty/reports"}];
+const Dashboard: React.FC = () => {
+    const sidebarItems = [
+    {
+        "label": "Notice Board",
+        "icon": "announcement",
+        "path": "/faculty/notice-board"
+    },
+    {
+        "label": "Activities",
+        "icon": "event",
+        "path": "/faculty/activities"
+    },
+    {
+        "label": "Discussion",
+        "icon": "forum",
+        "path": "/faculty/discussion"
+    },
+    {
+        "label": "Calendar",
+        "icon": "calendar_month",
+        "path": "/faculty/calendar"
+    },
+    {
+        "label": "My Courses",
+        "icon": "class",
+        "path": "/faculty/courses"
+    },
+    {
+        "label": "Timetable",
+        "icon": "schedule",
+        "path": "/faculty/timetable"
+    },
+    {
+        "label": "LMS Classroom",
+        "icon": "laptop",
+        "path": "/faculty/lms"
+    },
+    {
+        "label": "Assessments",
+        "icon": "quiz",
+        "path": "/faculty/assessments"
+    },
+    {
+        "label": "Assignments",
+        "icon": "assignment",
+        "path": "/faculty/assignments"
+    },
+    {
+        "label": "Attendance",
+        "icon": "task_alt",
+        "path": "/faculty/attendance"
+    },
+    {
+        "label": "Students",
+        "icon": "groups",
+        "path": "/faculty/students"
+    },
+    {
+        "label": "My Mentees",
+        "icon": "psychology",
+        "path": "/faculty/mentees"
+    },
+    {
+        "label": "Research",
+        "icon": "science",
+        "path": "/faculty/research"
+    },
+    {
+        "label": "Profile",
+        "icon": "person",
+        "path": "/faculty/profile"
+    },
+    {
+        "label": "Reports",
+        "icon": "analytics",
+        "path": "/faculty/reports"
+    }
+];
 
     return (
-        <Layout sidebarItems={{sidebarItems}}>
+        <Layout sidebarItems={sidebarItems}>
             <div className="flex flex-col gap-10">
                 <div className="flex items-center justify-between">
                     <div>
-                        <h1 className="text-4xl font-black text-slate-800 tracking-tight capitalize">{faculty} Dashboard</h1>
-                        <p className="text-slate-500 font-medium tracking-tight">Welcome to the CAMPUX Portal</p>
+                        <h1 className="text-4xl font-black text-slate-800 tracking-tight capitalize">faculty Dashboard</h1>
+                        <p className="text-slate-500 font-medium tracking-tight">Welcome to the VID Portal</p>
                     </div>
                 </div>
 
@@ -28,26 +104,26 @@ const Dashboard: React.FC = () => {{
                         Overview & Features
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {{sidebarItems.map((item, idx) => (
+                        {sidebarItems.map((item, idx) => (
                             <a 
-                                key={{idx}} 
-                                href={{item.path}}
+                                key={idx} 
+                                href={item.path}
                                 className="group flex items-center gap-6 p-8 bg-slate-50/50 rounded-3xl border border-slate-100 hover:border-indigo-400 hover:bg-white hover:shadow-xl transition-all duration-300"
                             >
                                 <div className="w-14 h-14 bg-white rounded-2xl shadow-md flex items-center justify-center text-indigo-500 group-hover:bg-indigo-500 group-hover:text-white transition-all">
-                                    <span className="material-icons text-2xl group-hover:scale-110 transition-transform">{{item.icon}}</span>
+                                    <span className="material-icons text-2xl group-hover:scale-110 transition-transform">{item.icon}</span>
                                 </div>
                                 <div>
-                                    <p className="font-extrabold text-slate-800 tracking-tight group-hover:text-indigo-600 transition-colors">{{item.label}}</p>
+                                    <p className="font-extrabold text-slate-800 tracking-tight group-hover:text-indigo-600 transition-colors">{item.label}</p>
                                     <p className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mt-1">Access Module</p>
                                 </div>
                             </a>
-                        ))}}
+                        ))}
                     </div>
                 </div>
             </div>
         </Layout>
     );
-}};
+};
 
 export default Dashboard;

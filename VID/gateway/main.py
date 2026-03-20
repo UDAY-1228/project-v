@@ -1,15 +1,14 @@
 from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from core.backend.database.connection import db
-from core.backend.auth.security import get_current_user
-
-# Import apps from workspaces
+# Using new JSON based auth
+from core.backend.auth.login import router as auth_router
 from super_admin.backend.api.routes import router as super_admin_router
 from admin.backend.api.routes import router as admin_router
 
 import importlib
 
-app = FastAPI(title="CAMPUX Campus Management System Gateway")
+app = FastAPI(title="VID Campus Management System Gateway")
 
 app.add_middleware(
     CORSMiddleware,
@@ -19,17 +18,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.on_event("startup")
-async def startup_db_client():
-    await db.connect_to_mongodb()
-
-@app.on_event("shutdown")
-async def shutdown_db_client():
-    await db.close_mongodb_connection()
-
 @app.get("/health")
 async def health():
-    return {"status": "ok", "service": "campux-gateway"}
+    return {"status": "ok", "service": "vid-gateway"}
+
+# Mount Auth
+app.include_router(auth_router, prefix="/api/auth", tags=["Authentication"])
 
 # Mount main modules
 app.include_router(super_admin_router, prefix="/api/super-admin", tags=["Super Admin"])
@@ -37,17 +31,16 @@ app.include_router(admin_router, prefix="/api/admin", tags=["Admin"])
 
 # Mount Workspaces
 workspaces = [
-    "principal", "academic-coordinator", "admission-officer", "admissions-counselor",
-    "common", "team-owner", "transport-coordinator", "employee", "hostel-admin",
-    "payment-administrator", "examination", "faculty", "student"
+    "principal", "academic_coordinator", "admission_officer", "admissions_counselor",
+    "common", "team_owner", "transport_coordinator", "employee", "hostel_admin",
+    "payment_administrator", "examination", "faculty", "student"
 ]
 
 for ws in workspaces:
     try:
-        # Load workspace routes dynamically
-        module_path = f"workspaces.{ws.replace('-', '_')}.backend.api.routes"
+        module_path = f"workspaces.{ws}.backend.api.routes"
         ws_module = importlib.import_module(module_path)
-        app.include_router(ws_module.router, prefix=f"/api/{ws}", tags=[ws.replace('-', ' ').capitalize()])
+        app.include_router(ws_module.router, prefix=f"/api/{ws.replace('_', '-')}", tags=[ws.replace('_', ' ').capitalize()])
     except ImportError as e:
         print(f"Could not import workspace {ws}: {e}")
 
