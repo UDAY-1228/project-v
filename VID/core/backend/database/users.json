@@ -1,1 +1,43 @@
-[]
+[
+    {
+        "userId": "admin_1",
+        "username": "admin",
+        "password": "password123",
+        "role": "admin",
+        "institutionId": "inst_1",
+        "assignedWorkspaces": []
+    },
+    {
+        "userId": "academic_1",
+        "username": "academic",
+        "password": "password123",
+        "role": "academic-coordinator",
+        "institutionId": "inst_1",
+        "assignedWorkspaces": [
+            "academic_coordinator"
+        ]
+    },
+    {
+        "userId": "student_1",
+        "username": "student",
+        "password": "password123",
+        "role": "student",
+        "institutionId": "inst_1",
+        "assignedWorkspaces": [
+            "student"
+        ]
+    },
+    {
+        "userId": "d99f2bac-596a-484b-b965-9078921fc32a",
+        "username": "savin@gmail.com",
+        "password": "90591",
+        "role": "admin",
+        "institutionId": "32ce38c9-063d-47bf-a7b0-166d9a131ba6",
+        "assignedWorkspaces": [
+            "dashboard",
+            "academics",
+            "attendance",
+            "users"
+        ]
+    }
+]

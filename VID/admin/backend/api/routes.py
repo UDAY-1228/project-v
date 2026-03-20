@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from typing import List, Optional
 import uuid
-from core.backend.database.json_storage import add_user, get_users, read_storage
+from core.backend.database.json_storage import add_user, get_users
 from core.backend.auth.security import TokenData, get_current_token # Simplified for UI
 
 router = APIRouter()
