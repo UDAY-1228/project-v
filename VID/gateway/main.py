@@ -7,8 +7,15 @@ from super_admin.backend.api.routes import router as super_admin_router
 from admin.backend.api.routes import router as admin_router
 
 import importlib
+from contextlib import asynccontextmanager
 
-app = FastAPI(title="VID Campus Management System Gateway")
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await db.connect_to_mongodb()
+    yield
+    await db.close_mongodb_connection()
+
+app = FastAPI(title="VID Campus Management System Gateway", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,

@@ -6,7 +6,7 @@ import json
 import os
 from typing import Dict, List, Any
 
-BASE_DIR = "/Users/nivas/Documents/React apps/v/project-v/VID/core/backend/database"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 USERS_PATH = os.path.join(BASE_DIR, "users.json")
 INSTS_PATH = os.path.join(BASE_DIR, "institutions.json")
 WS_PATH = os.path.join(BASE_DIR, "workspaces.json")

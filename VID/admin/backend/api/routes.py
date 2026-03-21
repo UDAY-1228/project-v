@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from typing import List, Optional
 import uuid
-from core.backend.database.json_storage import add_user, get_users
+from core.backend.database.connection import db
 from core.backend.auth.security import TokenData, get_current_token # Simplified for UI
 
 router = APIRouter()
@@ -23,13 +23,12 @@ async def create_institutional_user(data: dict):
         "institutionId": data.get("institutionId")
     }
     
-    add_user(user)
+    await db.db["users"].insert_one(user)
     
     return {"status": "success", "userId": user_id, "name": user["name"]}
 
 @router.get("/users")
 async def list_institution_users(institutionId: Optional[str] = None):
-    all_users = get_users()
-    if institutionId:
-        return [u for u in all_users if u.get("institutionId") == institutionId]
-    return all_users
+    query = {"institutionId": institutionId} if institutionId else {}
+    users = await db.db["users"].find(query, {"_id": 0}).to_list(1000)
+    return users

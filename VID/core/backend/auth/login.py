@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, status
-from core.backend.database.json_storage import get_users
+from core.backend.database.connection import db
 import secrets
 
 router = APIRouter()
@@ -18,12 +18,10 @@ async def unified_login(credentials: dict):
             "assignedWorkspaces": ["institutions", "analytics", "health"] # All for super admin
         }
     
-    # Check institutional admin and users in JSON storage
-    all_users = get_users()
-    matches = [u for u in all_users if u["username"] == username and u["password"] == password]
+    # Check institutional admin and users in MongoDB storage
+    user = await db.db["users"].find_one({"username": username, "password": password})
     
-    if matches:
-        user = matches[0]
+    if user:
         # Smarter Redirection
         if user["role"] == "admin":
             redirect = "/admin/dashboard"
