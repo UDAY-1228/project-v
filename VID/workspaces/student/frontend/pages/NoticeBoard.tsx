@@ -17,7 +17,7 @@ const NoticeBoard: React.FC = () => {
         { "label": "Payment History", "icon": "history", "path": "/student/payment-history" }
     ];
 
-    return <SharedNoticeBoard sidebarItems={sidebarItems} />;
+    return <SharedNoticeBoard sidebarItems={sidebarItems} canPost={false} />;
 };
 
 export default NoticeBoard;

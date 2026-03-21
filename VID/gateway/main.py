@@ -26,11 +26,14 @@ async def health():
 app.include_router(auth_router, prefix="/api/auth", tags=["Authentication"])
 
 from core.backend.api.timetable_routes import router as timetable_router
+from core.backend.api.notice_routes import router as notice_router
 
 # Mount main modules
 app.include_router(super_admin_router, prefix="/api/super-admin", tags=["Super Admin"])
 app.include_router(admin_router, prefix="/api/admin", tags=["Admin"])
 app.include_router(timetable_router, prefix="/api", tags=["Timetable"])
+app.include_router(notice_router, prefix="/api", tags=["Notices"])
+
 
 
 # Mount Workspaces
