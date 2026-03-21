@@ -42,20 +42,12 @@
   ],
   "workspaces": [
     {
-      "name": "principal",
-      "features": ["Digital Notice Board", "Activities", "Academics", "Data Management", "Configurations"]
-    },
-    {
       "name": "academic-coordinator",
       "features": ["Digital Notice Board", "Activities", "Principal Dashboard", "Academics", "Academic Setup", "Courses", "Master Courses", "Assessment", "Data Management", "Configurations"]
     },
     {
       "name": "admission-officer",
       "features": ["Digital Notice Board", "Prospects", "Applications", "Admissions"]
-    },
-    {
-      "name": "admissions-counselor",
-      "features": ["Digital Notice Board", "Prospects", "Applications", "Admissions", "Configurations"]
     },
     {
       "name": "common",
@@ -88,6 +80,10 @@
     {
       "name": "student",
       "features": ["Digital Notice Board", "Attendance", "Events", "LMS", "Exams", "Assessments", "Fee Payments", "My Profile", "Calendar"]
+    },
+    {
+      "name": "sports-officer",
+      "features": ["Digital Notice Board", "Sports Events", "Team Management", "Player Registrations", "Practice Schedules", "Tournament Management", "Performance Tracking", "Reports", "Activities List", "Event Calendar", "Student Participation", "Achievements", "Certificates", "Clubs Management", "Announcements"]
     }
   ]
 }

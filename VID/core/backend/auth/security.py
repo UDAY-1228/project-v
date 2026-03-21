@@ -9,8 +9,8 @@ from pydantic import BaseModel
 class UserRole(str, Enum):
     SUPER_ADMIN = "super-admin"
     INSTITUTION_ADMIN = "admin"
-    PRINCIPAL = "principal"
     VICE_PRINCIPAL = "vice-principal"
+    SPORTS_OFFICER = "sports-officer"
     FEES_COORDINATOR = "fees-coordinator"
     MANAGER = "manager"
     ACCOUNTS = "accounts"

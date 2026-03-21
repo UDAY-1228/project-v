@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Home from '../core/frontend/pages/Home';
 import Login from '../core/frontend/pages/Login';
 import SuperAdminDashboard from '../super_admin/frontend/pages/Dashboard';
 import CreateInstitution from '../super_admin/frontend/pages/CreateInstitution';
@@ -79,15 +80,13 @@ import PaymentAdministratorStatements from '../workspaces/payment_administrator/
 import PaymentAdministratorStudentFeeCard from '../workspaces/payment_administrator/frontend/pages/StudentFeeCard';
 import PaymentAdministratorStudentPermissions from '../workspaces/payment_administrator/frontend/pages/StudentPermissions';
 import PaymentAdministratorTransactionCard from '../workspaces/payment_administrator/frontend/pages/TransactionCard';
-import SportsAndCoCurricularAchievements from '../workspaces/sports_and_co_curricular/frontend/pages/Achievements';
-import SportsAndCoCurricularActivitiesList from '../workspaces/sports_and_co_curricular/frontend/pages/ActivitiesList';
-import SportsAndCoCurricularAnnouncements from '../workspaces/sports_and_co_curricular/frontend/pages/Announcements';
-import SportsAndCoCurricularCertificates from '../workspaces/sports_and_co_curricular/frontend/pages/Certificates';
-import SportsAndCoCurricularClubsManagement from '../workspaces/sports_and_co_curricular/frontend/pages/ClubsManagement';
-import SportsAndCoCurricularDashboard from '../workspaces/sports_and_co_curricular/frontend/pages/Dashboard';
-import SportsAndCoCurricularEventCalendar from '../workspaces/sports_and_co_curricular/frontend/pages/EventCalendar';
-import SportsAndCoCurricularNoticeBoard from '../workspaces/sports_and_co_curricular/frontend/pages/NoticeBoard';
-import SportsAndCoCurricularStudentParticipation from '../workspaces/sports_and_co_curricular/frontend/pages/StudentParticipation';
+import SportsOfficerAchievements from '../workspaces/sports_officer/frontend/pages/Achievements';
+import SportsOfficerActivitiesList from '../workspaces/sports_officer/frontend/pages/ActivitiesList';
+import SportsOfficerAnnouncements from '../workspaces/sports_officer/frontend/pages/Announcements';
+import SportsOfficerCertificates from '../workspaces/sports_officer/frontend/pages/Certificates';
+import SportsOfficerClubsManagement from '../workspaces/sports_officer/frontend/pages/ClubsManagement';
+import SportsOfficerEventCalendar from '../workspaces/sports_officer/frontend/pages/EventCalendar';
+import SportsOfficerStudentParticipation from '../workspaces/sports_officer/frontend/pages/StudentParticipation';
 import SportsOfficerDashboard from '../workspaces/sports_officer/frontend/pages/Dashboard';
 import SportsOfficerNoticeBoard from '../workspaces/sports_officer/frontend/pages/NoticeBoard';
 import SportsOfficerPerformanceTracking from '../workspaces/sports_officer/frontend/pages/PerformanceTracking';
@@ -117,8 +116,7 @@ import TeamOwnerNoticeBoard from '../workspaces/team_owner/frontend/pages/Notice
 import TeamOwnerOrganizationSettings from '../workspaces/team_owner/frontend/pages/OrganizationSettings';
 import TeamOwnerUserManagement from '../workspaces/team_owner/frontend/pages/UserManagement';
 
-import PrincipalDashboard from '../workspaces/principal/frontend/pages/Dashboard';
-import PrincipalNoticeBoard from '../workspaces/principal/frontend/pages/NoticeBoard';
+
 import AcademicDashboard from '../workspaces/academic_coordinator/frontend/pages/Dashboard';
 import AcademicNoticeBoard from '../workspaces/academic_coordinator/frontend/pages/NoticeBoard';
 import AcademicActivities from '../workspaces/academic_coordinator/frontend/pages/Activities';
@@ -146,7 +144,8 @@ const App: React.FC = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
         
         {/* Super Admin Routes */}
         <Route path="/super-admin/dashboard" element={<SuperAdminDashboard />} />
@@ -158,9 +157,6 @@ const App: React.FC = () => {
         <Route path="/admin/users" element={<AdminDashboard />} />
         
         {/* Legacy Pre-existing specific routes */}
-        <Route path="/principal/dashboard" element={<PrincipalDashboard />} />
-        <Route path="/principal/notice-board" element={<PrincipalNoticeBoard />} />
-        
         <Route path="/academic-coordinator/dashboard" element={<AcademicDashboard />} />
         <Route path="/academic-coordinator/notice-board" element={<AcademicNoticeBoard />} />
         <Route path="/academic-coordinator/activities" element={<AcademicActivities />} />
@@ -285,15 +281,13 @@ const App: React.FC = () => {
         <Route path="/sports-officer/tournament-management" element={<SportsOfficerTournamentManagement />} />
         <Route path="/sports-officer/performance-tracking" element={<SportsOfficerPerformanceTracking />} />
         <Route path="/sports-officer/reports" element={<SportsOfficerReports />} />
-        <Route path="/sports-and-co-curricular/dashboard" element={<SportsAndCoCurricularDashboard />} />
-        <Route path="/sports-and-co-curricular/notice-board" element={<SportsAndCoCurricularNoticeBoard />} />
-        <Route path="/sports-and-co-curricular/activities-list" element={<SportsAndCoCurricularActivitiesList />} />
-        <Route path="/sports-and-co-curricular/event-calendar" element={<SportsAndCoCurricularEventCalendar />} />
-        <Route path="/sports-and-co-curricular/student-participation" element={<SportsAndCoCurricularStudentParticipation />} />
-        <Route path="/sports-and-co-curricular/achievements" element={<SportsAndCoCurricularAchievements />} />
-        <Route path="/sports-and-co-curricular/certificates" element={<SportsAndCoCurricularCertificates />} />
-        <Route path="/sports-and-co-curricular/clubs-management" element={<SportsAndCoCurricularClubsManagement />} />
-        <Route path="/sports-and-co-curricular/announcements" element={<SportsAndCoCurricularAnnouncements />} />
+        <Route path="/sports-officer/activities-list" element={<SportsOfficerActivitiesList />} />
+        <Route path="/sports-officer/event-calendar" element={<SportsOfficerEventCalendar />} />
+        <Route path="/sports-officer/student-participation" element={<SportsOfficerStudentParticipation />} />
+        <Route path="/sports-officer/achievements" element={<SportsOfficerAchievements />} />
+        <Route path="/sports-officer/certificates" element={<SportsOfficerCertificates />} />
+        <Route path="/sports-officer/clubs-management" element={<SportsOfficerClubsManagement />} />
+        <Route path="/sports-officer/announcements" element={<SportsOfficerAnnouncements />} />
         
         {/* Fallback */}
         <Route path="*" element={<Navigate to="/" replace />} />

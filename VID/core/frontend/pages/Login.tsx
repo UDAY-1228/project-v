@@ -23,6 +23,11 @@ const Login: React.FC = () => {
 
     return (
         <div className="min-h-screen grid items-center justify-center p-8 bg-slate-900 overflow-hidden relative font-outfit">
+            {/* Back to home */}
+            <a href="/" className="fixed top-6 left-8 z-50 flex items-center gap-2 text-white/50 hover:text-white font-bold text-sm transition-colors">
+                <span className="material-icons text-lg">arrow_back</span>
+                Back to Home
+            </a>
             {/* Background elements */}
             <div className="absolute top-0 left-0 w-full h-full opacity-40 pointer-events-none">
                 <div className="absolute top-1/4 left-1/4 w-[45rem] h-[45rem] bg-indigo-600 rounded-full blur-[140px] animate-pulse"></div>

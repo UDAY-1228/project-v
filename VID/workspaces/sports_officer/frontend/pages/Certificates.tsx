@@ -3,16 +3,23 @@ import Layout from '../../../../core/frontend/components/Layout';
 import Card from '../../../../core/frontend/components/Card';
 
 const Certificates: React.FC = () => {
-    const sidebarItems = [
-        { "label": "Digital Notice Board", "icon": "announcement", "path": "/sports-and-co-curricular/notice-board" },
-        { "label": "Dashboard", "icon": "dashboard", "path": "/sports-and-co-curricular/dashboard" },
-        { "label": "Activities List", "icon": "list_alt", "path": "/sports-and-co-curricular/activities-list" },
-        { "label": "Event Calendar", "icon": "event", "path": "/sports-and-co-curricular/event-calendar" },
-        { "label": "Student Participation", "icon": "groups", "path": "/sports-and-co-curricular/student-participation" },
-        { "label": "Achievements", "icon": "emoji_events", "path": "/sports-and-co-curricular/achievements" },
-        { "label": "Certificates", "icon": "workspace_premium", "path": "/sports-and-co-curricular/certificates" },
-        { "label": "Clubs Management", "icon": "category", "path": "/sports-and-co-curricular/clubs-management" },
-        { "label": "Announcements", "icon": "campaign", "path": "/sports-and-co-curricular/announcements" }
+        const sidebarItems = [
+        { "label": "Digital Notice Board", "icon": "announcement", "path": "/sports-officer/notice-board" },
+        { "label": "Dashboard", "icon": "dashboard", "path": "/sports-officer/dashboard" },
+        { "label": "Sports Events", "icon": "emoji_events", "path": "/sports-officer/sports-events" },
+        { "label": "Team Management", "icon": "groups", "path": "/sports-officer/team-management" },
+        { "label": "Player Registrations", "icon": "how_to_reg", "path": "/sports-officer/player-registrations" },
+        { "label": "Practice Schedules", "icon": "schedule", "path": "/sports-officer/practice-schedules" },
+        { "label": "Tournament Management", "icon": "emoji_events", "path": "/sports-officer/tournament-management" },
+        { "label": "Performance Tracking", "icon": "trending_up", "path": "/sports-officer/performance-tracking" },
+        { "label": "Reports", "icon": "analytics", "path": "/sports-officer/reports" },
+        { "label": "Activities List", "icon": "list_alt", "path": "/sports-officer/activities-list" },
+        { "label": "Event Calendar", "icon": "event", "path": "/sports-officer/event-calendar" },
+        { "label": "Student Participation", "icon": "groups", "path": "/sports-officer/student-participation" },
+        { "label": "Achievements", "icon": "emoji_events", "path": "/sports-officer/achievements" },
+        { "label": "Certificates", "icon": "workspace_premium", "path": "/sports-officer/certificates" },
+        { "label": "Clubs Management", "icon": "category", "path": "/sports-officer/clubs-management" },
+        { "label": "Announcements", "icon": "campaign", "path": "/sports-officer/announcements" }
     ];
 
     return (

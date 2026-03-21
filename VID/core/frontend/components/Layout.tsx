@@ -40,10 +40,10 @@ const Layout: React.FC<LayoutProps> = ({ children, sidebarItems = [] }) => {
     const assignedWorkspaces = userData.assignedWorkspaces || [];
 
     const ALL_WORKSPACES = [
-        "principal", "academic_coordinator", "admission_officer", "admissions_counselor",
+        "academic_coordinator", "admission_officer",
         "common", "team_owner", "transport_coordinator", "employee", "hostel_admin",
         "payment_administrator", "examination", "faculty", "student", "course_coordinator",
-        "sports_officer", "sports_and_co_curricular"
+        "sports_officer"
     ];
 
     const displayWorkspaces = (role === 'admin' || role === 'super-admin')

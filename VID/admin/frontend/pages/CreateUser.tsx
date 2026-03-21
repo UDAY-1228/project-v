@@ -15,10 +15,8 @@ const CreateUser: React.FC = () => {
     const [success, setSuccess] = useState(false);
 
     const workspacesList = [
-        { id: "principal", name: "Principal Dashboard" },
         { id: "academic-coordinator", name: "Academic Coordinator" },
         { id: "admission-officer", name: "Admission Officer" },
-        { id: "admissions-counselor", name: "Admissions Counselor" },
         { id: "common", name: "Common (UMS)" },
         { id: "team-owner", name: "Team Owner" },
         { id: "transport-coordinator", name: "Transport Coordinator" },
@@ -27,12 +25,13 @@ const CreateUser: React.FC = () => {
         { id: "payment-administrator", name: "Payment Administrator" },
         { id: "examination", name: "Examination Center" },
         { id: "faculty", name: "Faculty Portal" },
+        { id: "sports-officer", name: "Sports Officer" },
         { id: "student", name: "Student Central" }
     ];
 
     const roles = [
-        { value: "principal", label: "Principal" },
         { value: "vice-principal", label: "Vice Principal" },
+        { value: "sports-officer", label: "Sports Officer" },
         { value: "fees-coordinator", label: "Fees Coordinator" },
         { value: "manager", label: "Manager" },
         { value: "accounts", label: "Accounts" },

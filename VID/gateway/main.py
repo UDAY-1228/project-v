@@ -31,10 +31,10 @@ app.include_router(admin_router, prefix="/api/admin", tags=["Admin"])
 
 # Mount Workspaces
 workspaces = [
-    "principal", "academic_coordinator", "admission_officer", "admissions_counselor",
+    "academic_coordinator", "admission_officer",
     "common", "team_owner", "transport_coordinator", "employee", "hostel_admin",
     "payment_administrator", "examination", "faculty", "student", "course_coordinator",
-    "sports_officer", "sports_and_co_curricular"
+    "sports_officer"
 ]
 
 for ws in workspaces:
