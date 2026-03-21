@@ -39,5 +39,16 @@
             "attendance",
             "users"
         ]
+    },
+    {
+        "userId": "7384a73f-3e17-46af-b3e6-1fbe5cc2c377",
+        "name": "aman",
+        "role": "student",
+        "username": "aman@gmail.com",
+        "password": "1234",
+        "assignedWorkspaces": [
+            "student"
+        ],
+        "institutionId": "32ce38c9-063d-47bf-a7b0-166d9a131ba6"
     }
 ]

@@ -1,0 +1,492 @@
+{
+  "students": [
+    {
+      "studentId": "S1",
+      "name": "Arjun Kumar",
+      "class": "CSE-A",
+      "subjects": [
+        "Math",
+        "Physics",
+        "English",
+        "Computer Science",
+        "Data Structures"
+      ]
+    },
+    {
+      "studentId": "S2",
+      "name": "Priya Sharma",
+      "class": "CSE-A",
+      "subjects": [
+        "Math",
+        "Physics",
+        "English",
+        "Computer Science",
+        "Data Structures"
+      ]
+    },
+    {
+      "studentId": "S3",
+      "name": "Rohan Verma",
+      "class": "CSE-B",
+      "subjects": [
+        "Math",
+        "Chemistry",
+        "English",
+        "Networks",
+        "Operating Systems"
+      ]
+    },
+    {
+      "studentId": "S4",
+      "name": "Sneha Patel",
+      "class": "ECE-A",
+      "subjects": [
+        "Math",
+        "Physics",
+        "Electronics",
+        "Signals",
+        "Microprocessors"
+      ]
+    }
+  ],
+  "faculty": [
+    {
+      "facultyId": "F1",
+      "name": "Dr. Anand Rao",
+      "subjects": [
+        "Math"
+      ],
+      "availability": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri"
+      ]
+    },
+    {
+      "facultyId": "F2",
+      "name": "Prof. Meena Nair",
+      "subjects": [
+        "Physics"
+      ],
+      "availability": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ]
+    },
+    {
+      "facultyId": "F3",
+      "name": "Dr. Suresh Kumar",
+      "subjects": [
+        "English"
+      ],
+      "availability": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri"
+      ]
+    },
+    {
+      "facultyId": "F4",
+      "name": "Prof. Ranjitha Iyer",
+      "subjects": [
+        "Computer Science",
+        "Data Structures"
+      ],
+      "availability": [
+        "Mon",
+        "Wed",
+        "Thu",
+        "Fri"
+      ]
+    },
+    {
+      "facultyId": "F5",
+      "name": "Dr. Vinod Menon",
+      "subjects": [
+        "Networks",
+        "Operating Systems"
+      ],
+      "availability": [
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ]
+    },
+    {
+      "facultyId": "F6",
+      "name": "Prof. Kavitha Reddy",
+      "subjects": [
+        "Chemistry"
+      ],
+      "availability": [
+        "Mon",
+        "Tue",
+        "Thu",
+        "Fri"
+      ]
+    },
+    {
+      "facultyId": "F7",
+      "name": "Dr. Balaji Srinivasan",
+      "subjects": [
+        "Electronics",
+        "Signals",
+        "Microprocessors"
+      ],
+      "availability": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu"
+      ]
+    }
+  ],
+  "courses": [
+    {
+      "classId": "CSE-A",
+      "subjects": [
+        {
+          "subject": "Math",
+          "facultyId": "F1"
+        },
+        {
+          "subject": "Physics",
+          "facultyId": "F2"
+        },
+        {
+          "subject": "English",
+          "facultyId": "F3"
+        },
+        {
+          "subject": "Computer Science",
+          "facultyId": "F4"
+        },
+        {
+          "subject": "Data Structures",
+          "facultyId": "F4"
+        }
+      ]
+    },
+    {
+      "classId": "CSE-B",
+      "subjects": [
+        {
+          "subject": "Math",
+          "facultyId": "F1"
+        },
+        {
+          "subject": "Chemistry",
+          "facultyId": "F6"
+        },
+        {
+          "subject": "English",
+          "facultyId": "F3"
+        },
+        {
+          "subject": "Networks",
+          "facultyId": "F5"
+        },
+        {
+          "subject": "Operating Systems",
+          "facultyId": "F5"
+        }
+      ]
+    },
+    {
+      "classId": "ECE-A",
+      "subjects": [
+        {
+          "subject": "Math",
+          "facultyId": "F1"
+        },
+        {
+          "subject": "Physics",
+          "facultyId": "F2"
+        },
+        {
+          "subject": "Electronics",
+          "facultyId": "F7"
+        },
+        {
+          "subject": "Signals",
+          "facultyId": "F7"
+        },
+        {
+          "subject": "Microprocessors",
+          "facultyId": "F7"
+        }
+      ]
+    }
+  ],
+  "timetables": [
+    {
+      "timetableId": "85b864c9-4e57-40ea-9a6d-c02b5a4d0cf5",
+      "classId": "CSE-B",
+      "schedule": [
+        {
+          "day": "Monday",
+          "periods": [
+            {
+              "time": "9:00-10:00",
+              "subject": "Math",
+              "facultyId": "F1",
+              "isBreak": false
+            },
+            {
+              "time": "10:00-11:00",
+              "subject": "Chemistry",
+              "facultyId": "F6",
+              "isBreak": false
+            },
+            {
+              "time": "11:00-12:00",
+              "subject": "English",
+              "facultyId": "F3",
+              "isBreak": false
+            },
+            {
+              "time": "12:00-1:00",
+              "subject": "BREAK",
+              "facultyId": null,
+              "isBreak": true
+            },
+            {
+              "time": "1:00-2:00",
+              "subject": "Networks",
+              "facultyId": "F5",
+              "isBreak": false
+            },
+            {
+              "time": "2:00-3:00",
+              "subject": "Operating Systems",
+              "facultyId": "F5",
+              "isBreak": false
+            }
+          ]
+        },
+        {
+          "day": "Tuesday",
+          "periods": [
+            {
+              "time": "9:00-10:00",
+              "subject": "Math",
+              "facultyId": "F1",
+              "isBreak": false
+            },
+            {
+              "time": "10:00-11:00",
+              "subject": "Chemistry",
+              "facultyId": "F6",
+              "isBreak": false
+            },
+            {
+              "time": "11:00-12:00",
+              "subject": "English",
+              "facultyId": "F3",
+              "isBreak": false
+            },
+            {
+              "time": "12:00-1:00",
+              "subject": "BREAK",
+              "facultyId": null,
+              "isBreak": true
+            },
+            {
+              "time": "1:00-2:00",
+              "subject": "Networks",
+              "facultyId": "F5",
+              "isBreak": false
+            },
+            {
+              "time": "2:00-3:00",
+              "subject": "Operating Systems",
+              "facultyId": "F5",
+              "isBreak": false
+            }
+          ]
+        },
+        {
+          "day": "Wednesday",
+          "periods": [
+            {
+              "time": "9:00-10:00",
+              "subject": "Math",
+              "facultyId": "F1",
+              "isBreak": false
+            },
+            {
+              "time": "10:00-11:00",
+              "subject": "Chemistry",
+              "facultyId": "F6",
+              "isBreak": false
+            },
+            {
+              "time": "11:00-12:00",
+              "subject": "English",
+              "facultyId": "F3",
+              "isBreak": false
+            },
+            {
+              "time": "12:00-1:00",
+              "subject": "BREAK",
+              "facultyId": null,
+              "isBreak": true
+            },
+            {
+              "time": "1:00-2:00",
+              "subject": "Networks",
+              "facultyId": "F5",
+              "isBreak": false
+            },
+            {
+              "time": "2:00-3:00",
+              "subject": "Operating Systems",
+              "facultyId": "F5",
+              "isBreak": false
+            }
+          ]
+        },
+        {
+          "day": "Thursday",
+          "periods": [
+            {
+              "time": "9:00-10:00",
+              "subject": "Math",
+              "facultyId": "F1",
+              "isBreak": false
+            },
+            {
+              "time": "10:00-11:00",
+              "subject": "Chemistry",
+              "facultyId": "F6",
+              "isBreak": false
+            },
+            {
+              "time": "11:00-12:00",
+              "subject": "English",
+              "facultyId": "F3",
+              "isBreak": false
+            },
+            {
+              "time": "12:00-1:00",
+              "subject": "BREAK",
+              "facultyId": null,
+              "isBreak": true
+            },
+            {
+              "time": "1:00-2:00",
+              "subject": "Networks",
+              "facultyId": "F5",
+              "isBreak": false
+            },
+            {
+              "time": "2:00-3:00",
+              "subject": "Operating Systems",
+              "facultyId": "F5",
+              "isBreak": false
+            }
+          ]
+        },
+        {
+          "day": "Friday",
+          "periods": [
+            {
+              "time": "9:00-10:00",
+              "subject": "Math",
+              "facultyId": "F1",
+              "isBreak": false
+            },
+            {
+              "time": "10:00-11:00",
+              "subject": "Chemistry",
+              "facultyId": "F6",
+              "isBreak": false
+            },
+            {
+              "time": "11:00-12:00",
+              "subject": "English",
+              "facultyId": "F3",
+              "isBreak": false
+            },
+            {
+              "time": "12:00-1:00",
+              "subject": "BREAK",
+              "facultyId": null,
+              "isBreak": true
+            },
+            {
+              "time": "1:00-2:00",
+              "subject": "Networks",
+              "facultyId": "F5",
+              "isBreak": false
+            },
+            {
+              "time": "2:00-3:00",
+              "subject": "Operating Systems",
+              "facultyId": "F5",
+              "isBreak": false
+            }
+          ]
+        },
+        {
+          "day": "Saturday",
+          "periods": [
+            {
+              "time": "9:00-10:00",
+              "subject": "Math",
+              "facultyId": "F1",
+              "isBreak": false
+            },
+            {
+              "time": "10:00-11:00",
+              "subject": "Chemistry",
+              "facultyId": "F6",
+              "isBreak": false
+            },
+            {
+              "time": "11:00-12:00",
+              "subject": "English",
+              "facultyId": "F3",
+              "isBreak": false
+            },
+            {
+              "time": "12:00-1:00",
+              "subject": "BREAK",
+              "facultyId": null,
+              "isBreak": true
+            },
+            {
+              "time": "1:00-2:00",
+              "subject": "Networks",
+              "facultyId": "F5",
+              "isBreak": false
+            },
+            {
+              "time": "2:00-3:00",
+              "subject": "Operating Systems",
+              "facultyId": "F5",
+              "isBreak": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "absences": [
+    {
+      "absenceId": "02520e82-aafd-44ff-91ea-0ffce466d23a",
+      "facultyId": "F1",
+      "date": "2026-03-22"
+    }
+  ]
+}

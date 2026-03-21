@@ -97,6 +97,7 @@ import SportsOfficerSportsEvents from '../workspaces/sports_officer/frontend/pag
 import SportsOfficerTeamManagement from '../workspaces/sports_officer/frontend/pages/TeamManagement';
 import SportsOfficerTournamentManagement from '../workspaces/sports_officer/frontend/pages/TournamentManagement';
 import StudentAttendance from '../workspaces/student/frontend/pages/Attendance';
+import StudentTimetable from '../workspaces/student/frontend/pages/Timetable';
 import StudentChatbot from '../workspaces/student/frontend/pages/Chatbot';
 import StudentCoCurricularActivities from '../workspaces/student/frontend/pages/CoCurricularActivities';
 import StudentCourseTracking from '../workspaces/student/frontend/pages/CourseTracking';
@@ -128,6 +129,8 @@ import MasterCourses from '../workspaces/academic_coordinator/frontend/pages/Mas
 import AcademicAssessment from '../workspaces/academic_coordinator/frontend/pages/Assessment';
 import DataManagement from '../workspaces/academic_coordinator/frontend/pages/DataManagement';
 import AcademicConfigurations from '../workspaces/academic_coordinator/frontend/pages/Configurations';
+import AcademicTimetable from '../workspaces/academic_coordinator/frontend/pages/Timetable';
+import AcademicTimetableAbsence from '../workspaces/academic_coordinator/frontend/pages/TimetableAbsence';
 
 import TransportCoordinatorDashboard from '../workspaces/transport_coordinator/frontend/pages/Dashboard';
 import TransportCoordinatorNoticeBoard from '../workspaces/transport_coordinator/frontend/pages/NoticeBoard';
@@ -168,6 +171,8 @@ const App: React.FC = () => {
         <Route path="/academic-coordinator/assessment" element={<AcademicAssessment />} />
         <Route path="/academic-coordinator/data-management" element={<DataManagement />} />
         <Route path="/academic-coordinator/config" element={<AcademicConfigurations />} />
+        <Route path="/academic-coordinator/timetable" element={<AcademicTimetable />} />
+        <Route path="/academic-coordinator/timetable-absence" element={<AcademicTimetableAbsence />} />
         
         <Route path="/transport-coordinator/dashboard" element={<TransportCoordinatorDashboard />} />
         <Route path="/transport-coordinator/notice-board" element={<TransportCoordinatorNoticeBoard />} />
@@ -263,6 +268,7 @@ const App: React.FC = () => {
         <Route path="/student/course-tracking" element={<StudentCourseTracking />} />
         <Route path="/student/profile" element={<StudentProfile />} />
         <Route path="/student/payment-history" element={<StudentPaymentHistory />} />
+        <Route path="/student/timetable" element={<StudentTimetable />} />
         <Route path="/examination/dashboard" element={<ExaminationDashboard />} />
         <Route path="/examination/notice-board" element={<ExaminationNoticeBoard />} />
         <Route path="/examination/results" element={<ExaminationResults />} />
