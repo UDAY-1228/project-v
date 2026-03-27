@@ -1,44 +1,44 @@
-# VID Enterprise Management System
+# VID (Virtual Identification System)
 
-## Project Structure
+## Project Overview
+VID is an enterprise-level education and institutional management platform. It leverages a scalable, modular, workspace-based architecture to centralize all institutional operations into a unified platform.
 
-```bash
-VID/
-├── core/               # Shared logic (Auth, DB, Base UI)
-├── admin/              # Institution Admin module
-├── super-admin/        # Super Admin module
-├── workspaces/         # Domain-specific modules
-│   ├── academic/
-│   ├── academic-coordinator/
-│   ├── admission-officer/
-│   ├── common/
-│   ├── team-owner/
-│   ├── transport-coordinator/
-│   ├── employee/
-│   ├── hostel-admin/
-│   ├── payment/
-│   ├── examination/
-│   ├── faculty/
-│   └── student/
-├── gateway/           # API Gateway (FastAPI)
-├── server/            # Infrastructure (Docker, Nginx)
-└── database/          # Database Schema Registry
-```
+## Key Features
+- **AI Integration**: AI Indra for analytics and a Voice Agent for parent communication.
+- **Auto-Generation**: Backend APIs, services, and schemas are automatically generated based on frontend definitions.
+- **Single Login System**: JWT-based single login for all roles.
+- **Multi-Tenant Isolation**: Institution-level isolation for data and permissions.
 
 ## Tech Stack
-- **Frontend**: React (TypeScript), TailwindCSS
-- **Backend**: Python (FastAPI)
-- **Database**: MongoDB
+- **Frontend**: Angular (TypeScript).
+- **Backend**: Python (FastAPI).
+- **Database**: MongoDB (Auto-generated).
+- **Authentication**: JWT Single Sign-On (SSO).
+- **Architecture**: Modular Workspace-Based.
 
-## Features
-- **JWT Auth & RBAC**: Role-based access control out of the box.
-- **Dynamic Workspaces**: Each workspace is a standalone FastAPI module.
-- **Super Admin**: Create institutions and auto-generate credentials.
-- **Admin**: Manage institution users (teachers, staff, students).
-- **Responsive UI**: Premium TailwindCSS design for all screens.
+## Project Structure
+```
+VID/
+├── admin-panels/
+│   ├── Frontend/           # Angular Components
+│   │   ├── super-admin/
+│   │   ├── admin/
+│   │   └── core-system/
+│   └── Backend/            # FastAPI Auto-Generated APIs
+│       ├── super-admin/
+│       ├── admin/
+│       ├── core-system/
+│       └── auto_api_generator.py # Base Logic for API Generation
+└── workspaces/             # Modular Business Units
+    ├── student/
+    ├── faculty/
+    └── [28+ other workspaces]
+```
 
-## Quick Start
-1. Run MongoDB.
-2. Setup environment variables (MONGO_URL, SECRET_KEY, DB_NAME).
-3. Run Gateway: `python -m gateway.main`.
-4. Deploy with Docker: `docker-compose -f server/docker-compose.yml up -d`.
+## Getting Started
+1. **Frontend Development**: Launch individual Angular modules for Super Admin, Admin, and Core System.
+2. **Backend Development**: Utilize the `auto_api_generator.py` to spin up services matching the frontend requirements.
+3. **AI Services**: Configure AI Indra and Voice Agent settings in the corresponding workspace.
+
+---
+© 2026 Virtual Identification System (VID) - Enterprise Edition.

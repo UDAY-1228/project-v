@@ -1,0 +1,60 @@
+<div class="p-8 bg-zinc-900 text-slate-200 min-h-screen">
+  <div class="flex items-center justify-between mb-12">
+    <div>
+      <h1 class="text-3xl font-black mb-2 text-white">Institution Dashboard</h1>
+      <p class="text-zinc-500 font-medium">Manage users, workspaces, and permissions.</p>
+    </div>
+    <div class="flex gap-4">
+      <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full shadow-lg shadow-indigo-600/30 transition-all">Add User</button>
+      <button class="bg-transparent border border-zinc-700 hover:bg-zinc-800 py-3 px-8 rounded-full transition-all">Export Report</button>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+    <div class="bg-zinc-800/80 p-6 rounded-3xl border border-zinc-700 shadow-xl">
+      <p class="text-zinc-400 font-bold text-sm uppercase tracking-wider mb-4">Total Users</p>
+      <div class="flex items-end gap-3">
+        <span class="text-5xl font-black text-white">{{ stats.users }}</span>
+        <span class="text-emerald-400 font-bold mb-1">+12%</span>
+      </div>
+    </div>
+    <div class="bg-zinc-800/80 p-6 rounded-3xl border border-zinc-700 shadow-xl">
+      <p class="text-zinc-400 font-bold text-sm uppercase tracking-wider mb-4">Active Workspaces</p>
+      <span class="text-5xl font-black text-white">{{ stats.active_workspaces }}</span>
+    </div>
+    <div class="bg-zinc-800/80 p-6 rounded-3xl border border-zinc-700 shadow-xl">
+      <p class="text-zinc-400 font-bold text-sm uppercase tracking-wider mb-4">Permissions Pending</p>
+      <span class="text-5xl font-black text-white text-amber-400">{{ stats.permission_requests }}</span>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-5 gap-8">
+    <div class="col-span-3 bg-zinc-800/40 p-10 rounded-[2.5rem] border border-zinc-700/50">
+      <h2 class="text-2xl font-bold mb-6">User Activity</h2>
+      <div class="space-y-4">
+        <div class="flex items-center gap-4 bg-zinc-800/60 p-4 rounded-2xl border border-zinc-700/30 hover:bg-zinc-700/50 transition-all cursor-pointer">
+          <div class="w-12 h-12 bg-indigo-500/20 rounded-full flex items-center justify-center font-bold text-indigo-400">AM</div>
+          <div>
+            <p class="font-bold">Animesh Mohanty</p>
+            <p class="text-sm text-zinc-500">Last login: 2 mins ago (Student Workspace)</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 bg-zinc-800/60 p-4 rounded-2xl border border-zinc-700/30 hover:bg-zinc-700/50 transition-all cursor-pointer">
+          <div class="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center font-bold text-purple-400">RK</div>
+          <div>
+            <p class="font-bold">Rajesh Kumar</p>
+            <p class="text-sm text-zinc-500">Last login: 15 mins ago (Faculty Workspace)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-span-2 space-y-8">
+      <div class="bg-gradient-to-br from-indigo-900 to-indigo-800 p-8 rounded-[2.5rem] shadow-2xl">
+        <h3 class="text-xl font-bold mb-4">Workspace Control</h3>
+        <p class="text-indigo-200 mb-6 font-medium">Instantly assign new workspaces or revoke permissions.</p>
+        <button class="w-full bg-white text-indigo-900 font-black py-4 rounded-2xl shadow-xl hover:scale-[1.02] transition-all">Manage Roles</button>
+      </div>
+    </div>
+  </div>
+</div>
