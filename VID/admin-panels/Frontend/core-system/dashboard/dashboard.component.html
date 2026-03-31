@@ -1,0 +1,42 @@
+<div class="core-dashboard-layout">
+  <aside class="sidebar">
+    <div class="logo">VID Core System</div>
+    <nav>
+      <a routerLink="/dashboard">Dashboard</a>
+      <a routerLink="/notices">Notice Board</a>
+      <a routerLink="/timetable">Timetable</a>
+      <a routerLink="/access-panel">User Access Panel</a>
+      <a routerLink="/settings">Basic Settings</a>
+      <button (click)="logout()">Logout</button>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <header>
+      <h1>Dashboard</h1>
+    </header>
+
+    <div class="user-overview">
+      <div class="card">
+        <h3>User Overview</h3>
+        <p>User Role: {{ userProfile.role }}</p>
+        <p>Email: {{ userProfile.email }}</p>
+      </div>
+      <div class="card">
+        <h3>Quick Access</h3>
+        <ul>
+          <li><a routerLink="/notices">Notifications</a></li>
+          <li><a routerLink="/timetable">Schedule</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <section class="workspace-access">
+      <h2>Workspace Access</h2>
+      <div *ngFor="let space of accessList" class="workspace-card">
+        <h3>{{ space.name }}</h3>
+        <p>{{ space.description }}</p>
+      </div>
+    </section>
+  </main>
+</div>
