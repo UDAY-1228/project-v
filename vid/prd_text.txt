@@ -1,0 +1,288 @@
+
+
+--- PAGE 1 ---
+📘
+PRODUCT REQUIREMENTS DOCUMENT (PRD)
+VID – Virtual Identification System (School ERP Platform)
+📌
+1. Product Overview
+VID (Virtual Identification) is a multi-tenant, role-based School ERP
+platform designed to manage multiple educational institutions under a unified,
+scalable, and secure architecture.
+It provides:
+Centralized governance (Super Admin)
+Institution-level autonomy
+Modular workspace-based operations
+High scalability and tenant isolation
+🎯
+2. Objectives
+Enable multi-institution management from a single platform
+Provide role-based workspace access control (RBAC)
+Ensure data isolation + security (multi-tenant architecture)
+Deliver modular, scalable, and configurable ERP system
+Support future extensibility (plug-and-play workspaces)
+🏗
+3. System Architecture
+3.1 Multi-Tenant Model
+Single Database Cluster
+Shared Infrastructure
+Tenant Isolation via:
+institution_id
+workspace_id
+3.2 Data Layer Design
+Row-Level Security (RLS)
+Indexed queries for performance
+
+--- PAGE 2 ---
+Logical segregation per institution
+High availability + optimized queries
+🧩
+4. Hierarchical Structure
+Super Admin (VID Control Panel)
+↓
+Institutions (Tenant Level)
+↓
+Institution Admin (Main Admin)
+↓
+Workspace Admins (Role-Based)
+↓
+End Users (Faculty, Students, Staff)
+👑
+5. Super Admin (VID Control Panel)
+Responsibilities:
+Manage Institutions
+Subscription & Plans
+Global Settings
+Monitoring & Analytics
+System Health & Logs
+Modules:
+Dashboard
+Create Institution
+Global Reports
+System Configuration
+📌
+From your document:
+
+--- PAGE 3 ---
+Dashboard, Create Institution, Login
+🏫
+6. Institution Layer
+Each institution acts like an independent tenant (like an apartment flat):
+Custom features per institution
+Independent configuration
+Separate users, roles, and workflows
+Institution Admin (Main Admin)
+Full access to all workspaces
+Creates users and assigns roles
+Configures institution settings
+🔐
+7. Role-Based Access Control (RBAC)
+Access is controlled based on:
+Role (Principal, Accountant, Faculty, etc.)
+Workspace assignment
+Examples:
+Principal → Academics + Examination
+Accountant → Payments + Finance
+Faculty → Courses + Timetable + Students
+🧠
+8. Request Flow Architecture
+User Request
+↓
+API Gateway
+↓
+Authentication Layer
+
+--- PAGE 4 ---
+↓
+Tenant Resolver (institution_id)
+↓
+Business Services (Workspace Logic)
+↓
+Database Query (Filtered by tenant_id)
+↓
+Response
+🧱
+9. Core System Modules
+From your document:
+Core Features:
+Login System
+Notice Board
+Timetable
+Security Layer
+Database Connectivity
+📌
+Modules include:
+notice_routes
+timetable_service
+authentication logic
+🧩
+10. WORKSPACES (Complete System Modules)
+This is the heart of VID — modular workspace system.
+🔹
+10.1 Academic Coordinator Workspace
+Features:
+
+--- PAGE 5 ---
+Academic Setup
+Courses Management
+Timetable
+Assessments
+Activities
+Principal Dashboard
+📌
+Includes 13+ modules
+🔹
+10.2 Admission Officer Workspace
+Features:
+Prospects Management
+Applications Tracking
+Admissions Workflow
+Configurations
+🔹
+10.3 Common Workspace (Student Central)
+Acts as Shared Layer:
+Student Central
+Payments
+Examination Access
+HRMS
+User Management System
+Notice Board
+🔹
+10.4 Course Coordinator Workspace
+Course Allocation
+Course Listing
+Academic Mapping
+🔹
+10.5 Employee Workspace
+Attendance
+Leaves
+
+--- PAGE 6 ---
+Salary
+Expenses
+Shift Management
+🔹
+10.6 Examination Workspace
+Results
+Tests
+Reports
+Previous Papers
+Analytics (toppers, averages)
+🔹
+10.7 Faculty Workspace
+Courses
+Timetable
+Mentees
+Question Banks
+LMS
+Profile Management
+🔹
+10.8 Hostel Admin Workspace
+Hostel Management
+Attendance
+Gate Pass
+Requests & Reports
+🔹
+10.9 Payment Administrator Workspace
+⚠
+Highly critical financial module
+Features:
+Academic Fees
+Online Transactions
+Scholarships
+Concessions
+Reports & Statements
+
+--- PAGE 7 ---
+Fee Cards
+📌
+Contains 15+ modules
+🔹
+10.10 Sports Officer Workspace
+Event Management
+Team Handling
+Performance Tracking
+Achievements & Certificates
+Calendar & Reports
+🔹
+10.11 Student Workspace
+Student Dashboard includes:
+Attendance
+Fees & Payments
+Exams
+LMS
+Timetable
+Chatbot
+Profile
+🔹
+10.12 Team Owner Workspace (Super Admin Equivalent)
+Institution Management
+Organization Settings
+Apps & Integrations
+Data Management
+🔹
+10.13 Transport Coordinator Workspace
+Bus Management
+Routes
+Boarding Points
+Route Assignments
+Analytics
+
+--- PAGE 8 ---
+🔹
+10.14 User Management System (Cross-Workspace)
+User Creation
+Role Assignment
+Permission Mapping
+Identity Handling (VID Profiles)
+⚙
+11. Infrastructure Design
+Backend:
+API-based architecture (routes.py, services, models)
+Modular service layers per workspace
+Frontend:
+Workspace-based UI
+Dashboard-driven navigation
+Role-specific interfaces
+🚀
+12. Key Benefits
+Scalability
+Supports unlimited institutions
+Security
+Tenant isolation (RLS)
+Secure authentication
+Performance
+Indexed queries
+Optimized data retrieval
+Cost Efficiency
+Shared infrastructure (multi-tenant)
+Maintainability
+
+--- PAGE 9 ---
+Modular workspace architecture
+Future Ready
+Easy to add new workspaces
+Plug-and-play modules
+📈
+13. Future Enhancements
+AI-based analytics dashboards
+Smart attendance (IoT / QR integration)
+Mobile-first application
+Marketplace for add-on modules
+Integration with payment gateways & maps
+🧾
+14. Summary
+VID is not just an ERP — it is a platform architecture:
+✔
+Multi-tenant
+✔
+Role-driven
+✔
+Modular
+✔
+Scalable
+✔
+Secure
+It behaves like:
+👉
+“ERP-as-a-Service for Educational Institutions”

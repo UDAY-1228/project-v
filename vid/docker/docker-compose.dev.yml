@@ -1,0 +1,59 @@
+services:
+  # ── PostgreSQL Database ───────────────────────────────────────────────────
+  db:
+    image: postgres:16-alpine
+    container_name: vid-db
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-vid_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-vid_password}
+      POSTGRES_DB: ${POSTGRES_DB:-vid_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vid_user -d vid_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ── Flask API Gateway ─────────────────────────────────────────────────────
+  gateway:
+    build:
+      context: ./backend/gateway
+      dockerfile: Dockerfile
+    container_name: vid-gateway
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-vid_user}:${POSTGRES_PASSWORD:-vid_password}@db:5432/${POSTGRES_DB:-vid_db}
+      - AUTH_SERVICE_URL=http://auth-service:8001
+      - SECRET_KEY=${SECRET_KEY}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./backend/gateway:/app
+
+  # ── Auth Service (UMS) ──────────────────────────────────────────────────
+  auth-service:
+    build:
+      context: ./backend/services/ums-service
+      dockerfile: Dockerfile
+    container_name: vid-auth-service
+    ports:
+      - "8001:8001"
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://${POSTGRES_USER:-vid_user}:${POSTGRES_PASSWORD:-vid_password}@db:5432/${POSTGRES_DB:-vid_db}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./backend/services/ums-service:/app
+
+volumes:
+  postgres_data:

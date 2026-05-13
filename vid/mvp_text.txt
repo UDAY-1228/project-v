@@ -1,0 +1,229 @@
+
+
+--- PAGE 1 ---
+VID – Virtual Identification System
+MVP (Minimum Viable Product) Requirements Document
+🎯
+1. MVP Objective
+The goal of the VID MVP is to build a functional, scalable, and demo-ready
+web application that validates the core architecture of a multi-tenant,
+workspace-based School ERP system.
+This MVP will:
+Demonstrate end-to-end workflows
+Validate workspace-based modular design
+Enable real users (Admin, Faculty, Student) to interact
+Serve as a foundation for full-scale product development
+🧭
+2. MVP Scope
+The MVP will include only high-impact core features required to operate a
+school digitally.
+Included:
+Multi-tenant setup (basic)
+Authentication & RBAC
+Core academic operations
+Student lifecycle management
+Fees & basic finance
+Examination system
+Timetable
+Basic communication layer
+Excluded (Post-MVP):
+Advanced AI (YANTRA full features)
+Transport, Hostel, Library
+Advanced analytics dashboards
+Marketplace integrations
+
+--- PAGE 2 ---
+🏗
+3. MVP Architecture Overview
+3.1 Architecture Type
+Multi-tenant (single database)
+Workspace-based modular design
+API-driven backend
+3.2 Core Flow
+User → Login → Select Workspace → Perform Action → Data stored per
+tenant
+3.3 Tech Stack (Suggested)
+Frontend:
+React / Next.js
+Tailwind CSS (Responsive UI)
+Backend:
+Node.js / Django
+REST APIs
+Database:
+PostgreSQL
+Row-Level Security (RLS)
+Hosting:
+AWS / Vercel / DigitalOcean
+🔐
+4. User Roles (MVP)
+4.1 Super Admin
+Create institutions
+View system-level data
+4.2 Institution Admin
+
+--- PAGE 3 ---
+Full control of institution
+Manage users & workspaces
+4.3 Faculty
+Manage classes, attendance, exams
+4.4 Student
+View academic data, fees, timetable
+🧩
+5. MVP Workspaces (Selected)
+Only essential workspaces are included in MVP:
+5.1 Authentication & User Management
+Login / Logout
+Role-based access
+User creation
+5.2 Academic Workspace
+Classes & Sections
+Subjects
+Faculty mapping
+5.3 Student Workspace
+Profile
+Attendance
+Timetable
+Results
+5.4 Faculty Workspace
+Attendance marking
+Student performance entry
+5.5 Examination Workspace
+
+--- PAGE 4 ---
+Exam creation
+Marks entry
+Report cards
+5.6 Payment Workspace
+Fee structure
+Fee collection (manual)
+Payment status
+5.7 Timetable Workspace
+Create timetable
+Assign periods
+5.8 Common Workspace
+Notice board
+Announcements
+5.9 Admin Dashboard
+Overview stats
+Basic analytics
+🔄
+6. Core Features Breakdown
+6.1 Authentication System
+Secure login (JWT/session-based)
+Role-based routing
+6.2 Multi-Tenant Handling
+institution_id mapping
+Data isolation
+6.3 Dashboard System
+Role-specific dashboards
+
+--- PAGE 5 ---
+6.4 CRUD Operations
+Students
+Faculty
+Classes
+Exams
+6.5 Attendance System
+Daily marking
+Reports
+6.6 Examination System
+Marks entry
+Result calculation
+6.7 Fee Management
+Fee records
+Due tracking
+6.8 Timetable Management
+Weekly schedule
+6.9 Notification System
+Notices
+Alerts
+🧠
+7. Data Model (Simplified)
+Core Tables:
+institutions
+users
+roles
+students
+faculty
+classes
+
+--- PAGE 6 ---
+subjects
+attendance
+exams
+marks
+fees
+Each table includes:
+institution_id (tenant isolation)
+🔁
+8. User Flow (MVP)
+Admin Flow:
+Login → Create Classes → Add Students → Assign Faculty → Setup Fees →
+Publish Timetable
+Faculty Flow:
+Login → View Classes → Mark Attendance → Enter Marks
+Student Flow:
+Login → View Dashboard → Check Attendance → View Results → Check
+Fees
+📱
+9. UI/UX Requirements (Responsive)
+Mobile-first design
+Dashboard-based navigation
+Sidebar workspace navigation
+Clean cards & tables
+Pages:
+Login Page
+Dashboard
+Workspace Pages
+Profile Page
+⚙
+10. Performance Requirements
+
+--- PAGE 7 ---
+Fast API response (<500ms)
+Indexed queries
+Optimized DB calls
+🔒
+11. Security Requirements
+JWT authentication
+Password encryption
+Role-based access control
+Tenant-level data isolation
+🚀
+12. Deployment Plan
+Phase 1:
+Backend APIs
+Database setup
+Phase 2:
+Frontend integration
+Phase 3:
+Testing & bug fixes
+Phase 4:
+MVP Launch
+📊
+13. Success Metrics
+Successful login & role routing
+Complete academic workflow
+Data isolation working
+3+ roles actively usable
+🔮
+14. Post-MVP Roadmap
+Add YANTRA AI features
+Add Transport, Hostel, Library
+
+--- PAGE 8 ---
+Advanced analytics dashboards
+Mobile app
+📌
+15. Conclusion
+This MVP represents a lean but powerful version of VID, focusing on:
+Core academic operations
+Multi-tenant architecture
+Role-based access
+It validates the vision of:
+👉
+Modular ERP Platform
+👉
+Scalable Education OS
+🚀
+Status: Ready for Development

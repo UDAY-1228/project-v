@@ -1,0 +1,570 @@
+// VID – Virtual Identification System
+// PostgreSQL Schema (Prisma)
+// Multi-tenant, Role-Based School ERP Platform
+
+generator client {
+  provider = "prisma-client-py"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─────────────────────────────────────────────
+// TIER 1: PLATFORM (Super Admin Level)
+// ─────────────────────────────────────────────
+
+model Institution {
+  id              String   @id @default(uuid()) @db.Uuid
+  name            String
+  code            String   @unique
+  domain          String?  @unique
+  email           String
+  phone           String?
+  address         String?
+  city            String?
+  state           String?
+  country         String   @default("India")
+  logoUrl         String?
+  isActive        Boolean  @default(true)
+  subscriptionPlan String  @default("basic")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relations
+  users           User[]
+  roles           Role[]
+  classes         Class[]
+  subjects        Subject[]
+  students        Student[]
+  faculty         Faculty[]
+  attendance      Attendance[]
+  exams           Exam[]
+  marks           Mark[]
+  fees            Fee[]
+  feePayments     FeePayment[]
+  timetable       Timetable[]
+  notices         Notice[]
+  workspaces      Workspace[]
+  academicYears   AcademicYear[]
+
+  @@map("institutions")
+}
+
+model AcademicYear {
+  id            String   @id @default(uuid()) @db.Uuid
+  institutionId String   @db.Uuid
+  name          String   // e.g. "2024-2025"
+  startDate     DateTime
+  endDate       DateTime
+  isCurrent     Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  institution   Institution @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+  classes       Class[]
+  exams         Exam[]
+  fees          Fee[]
+  attendance    Attendance[]
+
+  @@unique([institutionId, name])
+  @@map("academic_years")
+}
+
+// ─────────────────────────────────────────────
+// TIER 2: AUTH & RBAC
+// ─────────────────────────────────────────────
+
+enum UserType {
+  SUPER_ADMIN
+  INSTITUTION_ADMIN
+  FACULTY
+  STUDENT
+  STAFF
+  PARENT
+}
+
+model Role {
+  id            String   @id @default(uuid()) @db.Uuid
+  institutionId String?  @db.Uuid  // null = global role
+  name          String
+  code          String
+  description   String?
+  isSystem      Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  institution   Institution? @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+  userRoles     UserRole[]
+  permissions   RolePermission[]
+
+  @@unique([institutionId, code])
+  @@map("roles")
+}
+
+model Permission {
+  id          String   @id @default(uuid()) @db.Uuid
+  resource    String   // e.g. "students", "exams"
+  action      String   // e.g. "read", "write", "delete"
+  description String?
+
+  rolePermissions RolePermission[]
+
+  @@unique([resource, action])
+  @@map("permissions")
+}
+
+model RolePermission {
+  roleId       String @db.Uuid
+  permissionId String @db.Uuid
+
+  role       Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@id([roleId, permissionId])
+  @@map("role_permissions")
+}
+
+model User {
+  id              String   @id @default(uuid()) @db.Uuid
+  institutionId   String?  @db.Uuid  // null = super admin
+  email           String   @unique
+  passwordHash    String
+  firstName       String
+  lastName        String
+  phone           String?
+  avatarUrl       String?
+  userType        UserType @default(STAFF)
+  isActive        Boolean  @default(true)
+  isEmailVerified Boolean  @default(false)
+  lastLoginAt     DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  institution     Institution? @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+  userRoles       UserRole[]
+  sessions        Session[]
+  student         Student?
+  faculty         Faculty?
+  notifications   Notification[]
+
+  @@index([institutionId])
+  @@index([email])
+  @@map("users")
+}
+
+model UserRole {
+  id            String   @id @default(uuid()) @db.Uuid
+  userId        String   @db.Uuid
+  roleId        String   @db.Uuid
+  institutionId String   @db.Uuid
+  assignedAt    DateTime @default(now())
+
+  user  User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role  Role @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, roleId])
+  @@map("user_roles")
+}
+
+model Session {
+  id           String   @id @default(uuid()) @db.Uuid
+  userId       String   @db.Uuid
+  refreshToken String   @unique
+  expiresAt    DateTime
+  ipAddress    String?
+  userAgent    String?
+  createdAt    DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("sessions")
+}
+
+// ─────────────────────────────────────────────
+// TIER 3: WORKSPACE CONFIGURATION
+// ─────────────────────────────────────────────
+
+model Workspace {
+  id            String   @id @default(uuid()) @db.Uuid
+  institutionId String   @db.Uuid
+  name          String
+  code          String
+  description   String?
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+
+  institution Institution @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+
+  @@unique([institutionId, code])
+  @@map("workspaces")
+}
+
+// ─────────────────────────────────────────────
+// TIER 4: ACADEMIC CORE
+// ─────────────────────────────────────────────
+
+model Class {
+  id             String   @id @default(uuid()) @db.Uuid
+  institutionId  String   @db.Uuid
+  academicYearId String   @db.Uuid
+  name           String   // e.g. "10th Grade"
+  section        String?  // e.g. "A"
+  capacity       Int      @default(40)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  institution  Institution  @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+  academicYear AcademicYear @relation(fields: [academicYearId], references: [id], onDelete: Cascade)
+  students     StudentClass[]
+  subjects     ClassSubject[]
+  attendance   Attendance[]
+  timetable    Timetable[]
+  exams        Exam[]
+
+  @@unique([institutionId, academicYearId, name, section])
+  @@index([institutionId])
+  @@map("classes")
+}
+
+model Subject {
+  id            String   @id @default(uuid()) @db.Uuid
+  institutionId String   @db.Uuid
+  name          String
+  code          String
+  description   String?
+  credits       Int?
+  createdAt     DateTime @default(now())
+
+  institution   Institution    @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+  classSubjects ClassSubject[]
+  marks         Mark[]
+  timetable     Timetable[]
+
+  @@unique([institutionId, code])
+  @@index([institutionId])
+  @@map("subjects")
+}
+
+model ClassSubject {
+  id        String @id @default(uuid()) @db.Uuid
+  classId   String @db.Uuid
+  subjectId String @db.Uuid
+  facultyId String? @db.Uuid
+
+  class   Class   @relation(fields: [classId], references: [id], onDelete: Cascade)
+  subject Subject @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  faculty Faculty? @relation(fields: [facultyId], references: [id])
+
+  @@unique([classId, subjectId])
+  @@map("class_subjects")
+}
+
+// ─────────────────────────────────────────────
+// TIER 5: STUDENT MANAGEMENT
+// ─────────────────────────────────────────────
+
+model Student {
+  id              String   @id @default(uuid()) @db.Uuid
+  institutionId   String   @db.Uuid
+  userId          String   @unique @db.Uuid
+  rollNumber      String
+  admissionNumber String
+  dateOfBirth     DateTime?
+  gender          String?
+  address         String?
+  parentName      String?
+  parentPhone     String?
+  parentEmail     String?
+  bloodGroup      String?
+  category        String?
+  isActive        Boolean  @default(true)
+  admissionDate   DateTime @default(now())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  institution Institution    @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+  user        User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  classes     StudentClass[]
+  attendance  Attendance[]
+  marks       Mark[]
+  fees        Fee[]
+  feePayments FeePayment[]
+
+  @@unique([institutionId, rollNumber])
+  @@unique([institutionId, admissionNumber])
+  @@index([institutionId])
+  @@map("students")
+}
+
+model StudentClass {
+  id        String   @id @default(uuid()) @db.Uuid
+  studentId String   @db.Uuid
+  classId   String   @db.Uuid
+  joinedAt  DateTime @default(now())
+  isActive  Boolean  @default(true)
+
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  class   Class   @relation(fields: [classId], references: [id], onDelete: Cascade)
+
+  @@unique([studentId, classId])
+  @@map("student_classes")
+}
+
+// ─────────────────────────────────────────────
+// TIER 6: FACULTY MANAGEMENT
+// ─────────────────────────────────────────────
+
+model Faculty {
+  id              String   @id @default(uuid()) @db.Uuid
+  institutionId   String   @db.Uuid
+  userId          String   @unique @db.Uuid
+  employeeId      String
+  department      String?
+  designation     String?
+  qualification   String?
+  dateOfJoining   DateTime?
+  specialization  String?
+  isActive        Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  institution   Institution    @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+  user          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  classSubjects ClassSubject[]
+
+  @@unique([institutionId, employeeId])
+  @@index([institutionId])
+  @@map("faculty")
+}
+
+// ─────────────────────────────────────────────
+// TIER 7: ATTENDANCE
+// ─────────────────────────────────────────────
+
+enum AttendanceStatus {
+  PRESENT
+  ABSENT
+  LATE
+  EXCUSED
+}
+
+model Attendance {
+  id            String           @id @default(uuid()) @db.Uuid
+  institutionId String           @db.Uuid
+  academicYearId String          @db.Uuid
+  classId       String           @db.Uuid
+  studentId     String           @db.Uuid
+  date          DateTime         @db.Date
+  status        AttendanceStatus @default(PRESENT)
+  remarks       String?
+  markedById    String?          @db.Uuid
+  createdAt     DateTime         @default(now())
+
+  institution  Institution  @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+  academicYear AcademicYear @relation(fields: [academicYearId], references: [id], onDelete: Cascade)
+  class        Class        @relation(fields: [classId], references: [id], onDelete: Cascade)
+  student      Student      @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@unique([classId, studentId, date])
+  @@index([institutionId, date])
+  @@index([studentId])
+  @@map("attendance")
+}
+
+// ─────────────────────────────────────────────
+// TIER 8: EXAMINATION SYSTEM
+// ─────────────────────────────────────────────
+
+enum ExamStatus {
+  DRAFT
+  SCHEDULED
+  ONGOING
+  COMPLETED
+  CANCELLED
+}
+
+model Exam {
+  id             String     @id @default(uuid()) @db.Uuid
+  institutionId  String     @db.Uuid
+  academicYearId String     @db.Uuid
+  classId        String     @db.Uuid
+  name           String
+  type           String     // UNIT_TEST, MID_TERM, FINAL, etc.
+  startDate      DateTime
+  endDate        DateTime
+  totalMarks     Float
+  passMarks      Float
+  status         ExamStatus @default(DRAFT)
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+
+  institution  Institution  @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+  academicYear AcademicYear @relation(fields: [academicYearId], references: [id], onDelete: Cascade)
+  class        Class        @relation(fields: [classId], references: [id], onDelete: Cascade)
+  marks        Mark[]
+
+  @@index([institutionId])
+  @@map("exams")
+}
+
+model Mark {
+  id            String   @id @default(uuid()) @db.Uuid
+  institutionId String   @db.Uuid
+  examId        String   @db.Uuid
+  studentId     String   @db.Uuid
+  subjectId     String   @db.Uuid
+  marksObtained Float
+  grade         String?
+  remarks       String?
+  enteredById   String?  @db.Uuid
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  institution Institution @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+  exam        Exam        @relation(fields: [examId], references: [id], onDelete: Cascade)
+  student     Student     @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  subject     Subject     @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+
+  @@unique([examId, studentId, subjectId])
+  @@index([institutionId])
+  @@map("marks")
+}
+
+// ─────────────────────────────────────────────
+// TIER 9: FEE MANAGEMENT
+// ─────────────────────────────────────────────
+
+enum FeeStatus {
+  PENDING
+  PARTIAL
+  PAID
+  OVERDUE
+  WAIVED
+}
+
+enum PaymentMode {
+  CASH
+  BANK_TRANSFER
+  ONLINE
+  CHEQUE
+  DD
+}
+
+model Fee {
+  id             String    @id @default(uuid()) @db.Uuid
+  institutionId  String    @db.Uuid
+  academicYearId String    @db.Uuid
+  studentId      String    @db.Uuid
+  feeType        String    // TUITION, HOSTEL, TRANSPORT, EXAM, etc.
+  amount         Float
+  dueDate        DateTime
+  paidAmount     Float     @default(0)
+  status         FeeStatus @default(PENDING)
+  remarks        String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  institution  Institution  @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+  academicYear AcademicYear @relation(fields: [academicYearId], references: [id], onDelete: Cascade)
+  student      Student      @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  payments     FeePayment[]
+
+  @@index([institutionId])
+  @@index([studentId])
+  @@map("fees")
+}
+
+model FeePayment {
+  id            String      @id @default(uuid()) @db.Uuid
+  institutionId String      @db.Uuid
+  feeId         String      @db.Uuid
+  studentId     String      @db.Uuid
+  amount        Float
+  paymentMode   PaymentMode @default(CASH)
+  transactionId String?
+  receiptNumber String      @unique
+  paidAt        DateTime    @default(now())
+  collectedById String?     @db.Uuid
+  notes         String?
+
+  institution Institution @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+  fee         Fee         @relation(fields: [feeId], references: [id], onDelete: Cascade)
+  student     Student     @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@index([institutionId])
+  @@map("fee_payments")
+}
+
+// ─────────────────────────────────────────────
+// TIER 10: TIMETABLE
+// ─────────────────────────────────────────────
+
+model Timetable {
+  id            String   @id @default(uuid()) @db.Uuid
+  institutionId String   @db.Uuid
+  classId       String   @db.Uuid
+  subjectId     String   @db.Uuid
+  facultyId     String?  @db.Uuid
+  dayOfWeek     Int      // 1=Monday ... 7=Sunday
+  periodNumber  Int
+  startTime     String   // "09:00"
+  endTime       String   // "09:50"
+  room          String?
+  createdAt     DateTime @default(now())
+
+  institution Institution @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+  class       Class       @relation(fields: [classId], references: [id], onDelete: Cascade)
+  subject     Subject     @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+
+  @@unique([classId, dayOfWeek, periodNumber])
+  @@index([institutionId])
+  @@map("timetable")
+}
+
+// ─────────────────────────────────────────────
+// TIER 11: COMMUNICATION
+// ─────────────────────────────────────────────
+
+enum NoticeAudience {
+  ALL
+  STUDENTS
+  FACULTY
+  PARENTS
+  ADMIN
+}
+
+model Notice {
+  id            String         @id @default(uuid()) @db.Uuid
+  institutionId String         @db.Uuid
+  title         String
+  content       String
+  audience      NoticeAudience @default(ALL)
+  isPinned      Boolean        @default(false)
+  publishedAt   DateTime?
+  expiresAt     DateTime?
+  createdById   String         @db.Uuid
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
+  institution Institution @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+
+  @@index([institutionId])
+  @@map("notices")
+}
+
+model Notification {
+  id          String   @id @default(uuid()) @db.Uuid
+  userId      String   @db.Uuid
+  title       String
+  message     String
+  type        String   @default("INFO") // INFO, WARNING, SUCCESS, ERROR
+  isRead      Boolean  @default(false)
+  link        String?
+  createdAt   DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, isRead])
+  @@map("notifications")
+}
